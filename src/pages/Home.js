@@ -35,7 +35,7 @@ const Home = () => {
     </div>
     <section className="row" id="row-correction">
       <section className="col-12 col-lg-6 home-31">
-        <h2>Revolucionamos la manera en la que desarrolla tus cultivos con resultados medibles</h2>
+        <h2>Revolucionamos la manera en la que desarrollas tus cultivos con resultados medibles</h2>
         <p>Con la asesoría de nuestros expertos en campo, garantizamos resultados medibles y crecimiento de producción a mediano y largo plazo en todas las áreas de producción agrícola en Ecuador.</p>
           <Link to="/productos"><button>Productos</button></Link>
       </section>

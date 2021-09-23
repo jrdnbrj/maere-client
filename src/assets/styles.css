@@ -272,3 +272,36 @@
         display: none;
     }
 }
+
+/* FOOTER FOOTER FOOTER FOOTER FOOTER */
+
+.footer {
+    background-color: #173E3C;
+    color: #D7D8CF;
+}
+
+.footer section {
+    padding: 5% 7%;
+}
+
+.footer img {
+    width: 13rem;
+}
+
+.footer span {
+    display: block;
+    color: #D7D8CF;
+    font-size: 1.1rem;
+    font-family: Poppins Light;
+}
+
+.social p {
+    font-size: 2rem;
+    font-family: Poppins Bold;
+}
+
+.social i {
+    font-size: 2rem;
+    margin-right: 1.5rem;
+    color: #D7D8CF;
+}
