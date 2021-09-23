@@ -18,21 +18,21 @@ const Navbar = () => {
                         <Link className="nav-link active" to="/">Inicio</Link>
                     </li>
                     <li className="nav-item">
-                        <div class="btn-group">
-                            <Link class="btn-sm nav-link" to="/productos">
+                        <div className="btn-group">
+                            <Link className="btn-sm nav-link" to="/productos">
                                 Productos
                             </Link>
-                            <button type="button" class="dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                                <span class="visually-hidden">Toggle Dropdown</span>
+                            <button type="button" className="dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                                <span className="visually-hidden">Toggle Dropdown</span>
                             </button>
-                            <ul class="dropdown-menu dropdown-menu-dark">
-                                <li><a class="dropdown-item" href="#">Bioestumilantes</a></li>
-                                <li><hr class="dropdown-divider" /></li>
-                                <li><a class="dropdown-item" href="#">Biofertilizante</a></li>
-                                <li><hr class="dropdown-divider" /></li>
-                                <li><a class="dropdown-item" href="#">Biofertilizante</a></li>
-                                <li><hr class="dropdown-divider" /></li>
-                                <li><a class="dropdown-item" href="#">Fertilizantes</a></li>
+                            <ul className="dropdown-menu dropdown-menu-dark">
+                                <li><Link className="dropdown-item" to="/">Bioestumilantes</Link></li>
+                                <li><hr className="dropdown-divider" /></li>
+                                <li><Link className="dropdown-item" to="/">Biofertilizante</Link></li>
+                                <li><hr className="dropdown-divider" /></li>
+                                <li><Link className="dropdown-item" to="/">Biofertilizante</Link></li>
+                                <li><hr className="dropdown-divider" /></li>
+                                <li><Link className="dropdown-item" to="/">Fertilizantes</Link></li>
                             </ul>
                         </div>
                     </li>

@@ -162,7 +162,7 @@
 /* HOME HOME HOME HOME */
 
 .home-31 {
-    background-color: #23b44e;
+    background-color: #379E56;
     padding: 10% 15% 10% 5%;
     color: #EEE;
 }
@@ -191,13 +191,14 @@
 .home-4 {
     background-color: #173E3C;
     color: #FFF;
-    padding: 5% 0;
+    padding: 7% 0;
 }
 
 .home-4 h2 {
     font-size: 1.3rem;
     font-family: Poppins Bold;
     text-align: center;
+    margin: 0 10%;
 }
 
 .home-4 section {
@@ -206,5 +207,68 @@
 
 .home-4 section img {
     height: 2.8rem;
-    margin: 1rem 2rem;
+    margin-top: 1.5rem;
+    object-fit: contain;
+}
+
+.home-4 .col-lg-1 {
+    flex: auto;
+}
+
+.campo {
+    padding: 0;
+}
+
+.campo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.home-52 {
+    padding: 5% 7%;
+    color: #173E3C;
+    background-color: #D7D8CF;
+}
+
+.home-52 p:first-child {
+    font-family: Poppins Bold;
+    font-size: 1.6rem;
+}
+
+.home-52 p {
+    font-family: Poppins Light;
+    font-size: 1rem;
+}
+
+.form-floating .form-control {
+    border: 0;
+    border-bottom: #173E3C 2.5px solid;
+    border-radius: 0;
+    color: #173E3C;
+    height: 3.5rem;
+    background-color: transparent;
+}
+
+.form-floating label {
+    color: #173E3C;
+    font-family: Poppins Light;
+}
+
+.form-floating .form-control:focus {
+    box-shadow: none;
+}
+
+#mensaje {
+    height: 6rem;
+}
+
+@media (max-width: 990px) {
+
+}
+
+@media (min-width: 991px) {
+    .lg-hidden {
+        display: none;
+    }
 }
