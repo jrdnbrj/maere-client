@@ -4,6 +4,11 @@
     padding: 0;
 }
 
+#row-correction {
+    margin-right: 0;
+    margin-left: 0;
+}
+
 /* FONTS FONTS FONTS FONTS */
 
 @font-face {
@@ -152,4 +157,54 @@
     .dropdown-toggle, .dropdown-menu.show {
         display: none;
     }
+}
+
+/* HOME HOME HOME HOME */
+
+.home-31 {
+    background-color: #23b44e;
+    padding: 10% 15% 10% 5%;
+    color: #EEE;
+}
+
+.home-31 h2 {
+    font-family: Poppins Bold;
+    font-size: 1.6rem;
+}
+
+.home-31 p {
+    font-family: Poppins Light;
+    font-size: 0.9rem;
+    margin: 8% 0;
+}
+
+.home-31 button {
+    background-color: #173E3C;
+    color: #FFF;
+    padding: 0.5rem 5rem 0.5rem 1rem;
+    border: 0;
+    border-radius: 0.5rem;
+    font-family: Poppins Semi Bold;
+    font-size: 1.3rem;
+}
+
+.home-4 {
+    background-color: #173E3C;
+    color: #FFF;
+    padding: 5% 0;
+}
+
+.home-4 h2 {
+    font-size: 1.3rem;
+    font-family: Poppins Bold;
+    text-align: center;
+}
+
+.home-4 section {
+    text-align: center;
+}
+
+.home-4 section img {
+    height: 2.8rem;
+    margin: 1rem 2rem;
 }

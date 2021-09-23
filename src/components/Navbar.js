@@ -19,7 +19,7 @@ const Navbar = () => {
                     </li>
                     <li className="nav-item">
                         <div class="btn-group">
-                            <Link class="btn-sm nav-link" to="/">
+                            <Link class="btn-sm nav-link" to="/productos">
                                 Productos
                             </Link>
                             <button type="button" class="dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
@@ -37,10 +37,10 @@ const Navbar = () => {
                         </div>
                     </li>
                     <li className="nav-item">
-                        <Link className="nav-link" to="/">Nosotros</Link>
+                        <Link className="nav-link" to="/nosotros">Nosotros</Link>
                     </li>
                     <li className="nav-item">
-                        <Link className="nav-link" to="/">Contactos</Link>
+                        <Link className="nav-link" to="/contactos">Contactos</Link>
                     </li>
                 </ul>
             </div>
