@@ -11,10 +11,10 @@ const Footer = () => {
         <section className="col-lg-6 social">
             <p>Suscríbete a nuestras noticias</p>
             <a href="https://www.instagram.com/" target="_blank" rel="noreferrer">
-                <i class="bi bi-instagram" />
+                <i className="bi bi-instagram" />
             </a>
             <a href="https://www.facebook.com/" target="_blank" rel="noreferrer">
-                <i class="bi bi-facebook" />
+                <i className="bi bi-facebook" />
             </a>
         </section>
     </section>

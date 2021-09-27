@@ -122,6 +122,10 @@
     color: #D7D8CF;
 }
 
+.navbar-brand {
+    margin-left: 4%;
+}
+
 .logo-nav {
     width: 8rem;
 }
@@ -361,5 +365,70 @@
     }
     .hacemos img {
         width: 55%;
+    }
+}
+
+/* CONTACTOS CONTACTOS CONTACTOS */
+
+.contact-header {
+    background-image: url('./img/campo.jpg');
+    background-size: cover;
+    color: #FFF;
+    padding: 21% 55% 21% 5%;
+}
+
+.contact-header h1 {
+    font-family: Poppins Bold;
+    font-size: 2.75rem;
+}
+
+.contact-header p {
+    font-family: Poppins Light;
+    font-size: 1.05rem;
+    margin-top: 5%;
+}
+
+.contact-form {
+    background-image: url('./img/flores.png');
+    background-size: cover;
+}
+
+.contact-form .home-52 {
+    background-color: transparent;
+}
+
+.contact-social {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    padding: 0 7%;
+}
+
+.contact-social img {
+    width: 80%;
+}
+
+.contact-form .social {
+    color: #173E3C;
+    margin-top: 7%;
+}
+
+.contact-form .social p {
+    font-size: 1.5rem;
+}
+
+.contact-form .social i {
+    color: #173E3C;
+}
+
+@media (max-width: 990px) {
+    .contact-header {
+        padding: 21% 10%;
+    }
+    .contact-social {
+        padding: 10% 7%;
+    }
+    .contact-social img {
+        width: 70%;
     }
 }

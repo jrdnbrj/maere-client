@@ -6,7 +6,7 @@ import logo from '../assets/img/logo_1.png'
 const Navbar = () => {
     return <nav className="navbar navbar-container navbar-expand-lg bg-light">
         <div className="container-fluid">
-            <Link className="ms-5 navbar-brand" to="/">
+            <Link className="navbar-brand" to="/">
                 <img src={logo} className="logo-nav" alt="Maere Logo" />
             </Link>
             <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
