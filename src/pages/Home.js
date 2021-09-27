@@ -83,7 +83,6 @@ const Home = () => {
         </form>
       </section>
     </section>
-    <section></section>
   </>
 }
 

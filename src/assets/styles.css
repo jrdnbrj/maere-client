@@ -263,10 +263,6 @@
     height: 6rem;
 }
 
-@media (max-width: 990px) {
-
-}
-
 @media (min-width: 991px) {
     .lg-hidden {
         display: none;
@@ -304,4 +300,66 @@
     font-size: 2rem;
     margin-right: 1.5rem;
     color: #D7D8CF;
+}
+
+/* NOSOTROS NOSOTROS NOSOTROS NOSOTROS */
+
+.us {
+    background-color: #173E3C;
+    color: #FFF;
+    padding: 0 7%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.us h1 {
+    display: block;
+    font-size: 2.5rem;
+    font-family: Poppins Bold;
+}
+
+.us p {
+    display: block;
+    font-family: Poppins Light;
+    font-size: 1.05rem;
+    margin-top: 5%;
+}
+
+.hacemos {
+    background-image: url('./img/flores.png');
+    background-color: #D7D8CF;
+    color: #173E3C;
+}
+
+.hacemos section {
+    padding: 10% 5%;
+}
+
+.hacemos img {
+    width: 65%;
+}
+
+.hacemos h1 {
+    font-size: 3rem;
+    font-family: Poppins Bold;
+}
+
+.hacemos p {
+    font-family: Poppins Light;
+    font-size: 1.05rem;
+    margin-top: 8%;
+}
+
+#marcas-us {
+    background-color: #379E56;
+}
+
+@media (max-width: 990px) {
+    .us {
+        padding: 15% 10%;
+    }
+    .hacemos img {
+        width: 55%;
+    }
 }
