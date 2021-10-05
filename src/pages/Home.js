@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
 
 import bananas from '../assets/img/bananas.jpg'
+import camarones from '../assets/img/camarones.jpg'
 
 import symborg from '../assets/img/symborg.svg'
 import catawba from '../assets/img/catawba.svg'
@@ -12,16 +13,13 @@ import campo from '../assets/img/campo.jpg'
 
 const Home = () => {
   return <>
-    <div id="carouselExampleInterval" className="carousel slide" data-bs-ride="carousel">
+    <div id="carouselExampleInterval" className="carousel slide carousel-fade" data-bs-ride="carousel">
       <div className="carousel-inner">
         <div className="carousel-item active" data-bs-interval="5000">
           <img src={bananas} className="d-block w-100" alt="Bananas" />
         </div>
         <div className="carousel-item" data-bs-interval="5000">
-          <img src={bananas} className="d-block w-100" alt="Bananas" />
-        </div>
-        <div className="carousel-item" data-bs-interval="5000">
-          <img src={bananas} className="d-block w-100" alt="Bananas" />
+          <img src={camarones} className="d-block w-100" alt="Camarones" />
         </div>
       </div>
       <button className="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="prev">
