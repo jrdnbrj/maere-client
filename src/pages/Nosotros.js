@@ -1,10 +1,10 @@
 import campo from '../assets/img/campo.jpg'
-import logo from '../assets/img/logo_4.png'
+import logo from '../assets/img/logo_3.svg'
 
-import symborg from '../assets/img/symborg.png'
-import catawba from '../assets/img/catawba.png'
-import acp from '../assets/img/acp.png'
-import fcnecsa from '../assets/img/fcnecsa.png'
+import symborg from '../assets/img/symborg.svg'
+import catawba from '../assets/img/catawba.svg'
+import acp from '../assets/img/acp.svg'
+import fcnecsa from '../assets/img/fcnecsa.svg'
 
 
 const Nosotros = () => {
@@ -18,7 +18,7 @@ const Nosotros = () => {
                 <img src={campo} alt="Campo" />
             </section>
         </section>
-        <section className="row hacemos " id="row-correction">
+        <section className="row hacemos" id="row-correction">
             <section className="col-lg-6">
                 <img src={logo} alt="Logo" />
             </section>
@@ -38,33 +38,6 @@ const Nosotros = () => {
                 <img src={acp} className="col-sm-4 col-lg-1" alt="acp" />
                 <img src={fcnecsa} className="col-sm-4 col-lg-1" alt="fcnecsa" />
                 <div className="col-sm-2 col-lg-4" />
-            </section>
-        </section>
-        <section className="row" id="row-correction">
-            <section className="col-12 col-lg-6 campo">
-                <img src={campo} alt="Campo" />
-            </section>
-            <section className="col-12 col-lg-6 home-52">
-                <p>Cualquiera que sea la pregunta, ¡estamos aquí para ayudar!</p>
-                <p>Recibirás las últimas noticias sobre nuestros productos y tips agrícolas de nueva generación.</p>
-                <form>
-                    <div className="form-floating">
-                        <input type="text" className="form-control" placeholder="Juan Mera" />
-                        <label>Nombre</label>
-                    </div>
-                    <div className="form-floating">
-                        <input type="text" className="form-control" placeholder="0999999999" />
-                        <label>Teléfono</label>
-                    </div>
-                    <div className="form-floating">
-                        <input type="email" className="form-control" placeholder="nombre@maere.com" />
-                        <label>Correo Electrónico</label>
-                    </div>
-                    <div className="form-floating">
-                        <textarea type="text" className="form-control" placeholder="Escrute tu mensaje aquí" id="mensaje" />
-                        <label>Mensaje</label>
-                    </div>
-                </form>
             </section>
         </section>
     </>

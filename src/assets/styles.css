@@ -127,7 +127,7 @@
 }
 
 .logo-nav {
-    width: 8rem;
+    width: 7rem;
 }
 
 .bi-list {
@@ -342,6 +342,7 @@
 
 .hacemos img {
     width: 65%;
+    filter: invert(48%) sepia(13%) saturate(3207%) hue-rotate(138deg) brightness(30%) contrast(80%);
 }
 
 .hacemos h1 {
@@ -406,6 +407,7 @@
 
 .contact-social img {
     width: 80%;
+    filter: invert(48%) sepia(13%) saturate(3207%) hue-rotate(138deg) brightness(30%) contrast(80%);
 }
 
 .contact-form .social {
@@ -431,4 +433,82 @@
     .contact-social img {
         width: 70%;
     }
+}
+
+/* PRODUCTS PRODUCTS PRODUCTS PRODUCTS */
+
+.header {
+    position: relative;
+    /* text-align: center; */
+}
+
+.frutas {
+    width: 100%;
+}
+
+.header section {
+    position: absolute;
+    top: 39%;
+    left: 6%;
+    right: 61%;
+    color: #FFF;
+}
+
+.header section img {
+    width: 35%;
+    margin-bottom: 5%;
+}
+
+.header section h3 {
+    font-size: 1.7rem;
+    font-family: Poppins Bold;
+}
+
+.header section p {
+    font-size: 0.9rem;
+    font-family: Poppins Light;
+}
+
+.bio-menu {
+    background-color: #173E3C;
+    color: #FFF;
+    font-size: 0.9rem;
+    font-family: Poppins Bold;
+    padding: 2% 0 2% 7%;
+}
+
+.bio-menu span {
+    margin-right: 5%;
+}
+
+.products {
+    color: #173E3C;
+    padding: 5%;
+}
+
+.products h2 {
+    display: inline;
+    font-family: Poppins Bold;
+    font-size: 2.3rem;
+    vertical-align: middle;
+}
+
+.product-brand {
+    height: 2.7rem;
+    margin-left: 6%;
+    filter: invert(48%) sepia(13%) saturate(3207%) hue-rotate(138deg) brightness(30%) contrast(80%);
+}
+
+.product-list {
+    margin: 3% 0;
+}
+
+.product-list img {
+    width: 75%;
+}
+
+.product-list .col-lg-3 {
+    display: flex;
+    justify-content: center;
+    margin: 2% 0;
 }

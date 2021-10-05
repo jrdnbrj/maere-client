@@ -1,9 +1,9 @@
-import logo from '../assets/img/logo_4.png'
+import logo from '../assets/img/logo_3.svg'
 
-import symborg from '../assets/img/symborg.png'
-import catawba from '../assets/img/catawba.png'
-import acp from '../assets/img/acp.png'
-import fcnecsa from '../assets/img/fcnecsa.png'
+import symborg from '../assets/img/symborg.svg'
+import catawba from '../assets/img/catawba.svg'
+import acp from '../assets/img/acp.svg'
+import fcnecsa from '../assets/img/fcnecsa.svg'
 
 
 const Contactos = () => {

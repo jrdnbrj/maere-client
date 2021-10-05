@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 
-import logo from '../assets/img/logo_1.png'
+import logo from '../assets/img/logo_1.svg'
 
 
 const Navbar = () => {
@@ -26,13 +26,13 @@ const Navbar = () => {
                                 <span className="visually-hidden">Toggle Dropdown</span>
                             </button>
                             <ul className="dropdown-menu dropdown-menu-dark">
-                                <li><Link className="dropdown-item" to="/">Bioestumilantes</Link></li>
+                                <li><Link className="dropdown-item" to="/productos">Bioestumilantes</Link></li>
                                 <li><hr className="dropdown-divider" /></li>
-                                <li><Link className="dropdown-item" to="/">Biofertilizante</Link></li>
+                                <li><Link className="dropdown-item" to="/productos">Biofertilizante</Link></li>
                                 <li><hr className="dropdown-divider" /></li>
-                                <li><Link className="dropdown-item" to="/">Biofertilizante</Link></li>
+                                <li><Link className="dropdown-item" to="/productos">Biofertilizante</Link></li>
                                 <li><hr className="dropdown-divider" /></li>
-                                <li><Link className="dropdown-item" to="/">Fertilizantes</Link></li>
+                                <li><Link className="dropdown-item" to="/productos">Fertilizantes</Link></li>
                             </ul>
                         </div>
                     </li>
