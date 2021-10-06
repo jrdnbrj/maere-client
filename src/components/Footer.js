@@ -25,9 +25,10 @@ const Footer = () => {
                         <label>Correo Electrónico</label>
                     </div>
                     <div className="form-floating">
-                        <textarea type="text" className="form-control" placeholder="Escrute tu mensaje aquí" id="mensaje" />
+                        <textarea type="text" className="form-control" placeholder="Escribe tu mensaje aquí" id="mensaje" />
                         <label>Mensaje</label>
                     </div>
+                    <button type="submit" className="submit">Enviar</button>
                 </form>
             </section>
         </section>

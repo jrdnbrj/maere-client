@@ -267,6 +267,16 @@
     height: 6rem;
 }
 
+.submit {
+    background-color: #173E3C;
+    color: #fff;
+    border: 0;
+    border-radius: 10px;
+    padding: 1% 7%;
+    font-family: Poppins Semi Bold;
+    margin-top: 5%;
+}
+
 @media (min-width: 991px) {
     .lg-hidden {
         display: none;

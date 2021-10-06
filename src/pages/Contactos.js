@@ -45,6 +45,7 @@ const Contactos = () => {
                         <textarea type="text" className="form-control" placeholder="Escrute tu mensaje aquí" id="mensaje" />
                         <label>Mensaje</label>
                     </div>
+                    <button type="submit" className="submit">Enviar</button>
                 </form>
             </section>
         </section>
