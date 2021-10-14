@@ -26,13 +26,15 @@ const Navbar = () => {
                                 <span className="visually-hidden">Toggle Dropdown</span>
                             </button>
                             <ul className="dropdown-menu dropdown-menu-dark">
-                                <li><Link className="dropdown-item" to="/productos">Bioestumilantes</Link></li>
+                                <li><a href="/productos#bioestimulantes" className="dropdown-item">Bioestumilantes</a></li>
                                 <li><hr className="dropdown-divider" /></li>
-                                <li><Link className="dropdown-item" to="/productos">Biofertilizante</Link></li>
+                                <li><a href="/productos#biopesticidas" className="dropdown-item">Biopesticidas</a></li>
                                 <li><hr className="dropdown-divider" /></li>
-                                <li><Link className="dropdown-item" to="/productos">Biofertilizante</Link></li>
+                                <li><a href="/productos#biofertilizantes" className="dropdown-item">Biofertilizante</a></li>
                                 <li><hr className="dropdown-divider" /></li>
-                                <li><Link className="dropdown-item" to="/productos">Fertilizantes</Link></li>
+                                <li><a href="/productos#correctores" className="dropdown-item">Correctores de Suelo</a></li>
+                                <li><hr className="dropdown-divider" /></li>
+                                <li><a href="/productos#fertilizantes" className="dropdown-item">Fertilizantes Foliares</a></li>
                             </ul>
                         </div>
                     </li>

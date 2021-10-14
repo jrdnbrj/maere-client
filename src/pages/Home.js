@@ -1,5 +1,7 @@
 import { Link } from 'react-router-dom'
 
+import logo from '../assets/img/logo_2.svg'
+
 import bananas from '../assets/img/bananas.jpg'
 import camarones from '../assets/img/camarones.jpg'
 
@@ -15,11 +17,21 @@ const Home = () => {
   return <>
     <div id="carouselExampleInterval" className="carousel slide carousel-fade" data-bs-ride="carousel">
       <div className="carousel-inner">
-        <div className="carousel-item active" data-bs-interval="5000">
-          <img src={bananas} className="d-block w-100" alt="Bananas" />
+        <div className="header carousel-item active" data-bs-interval="5000">
+          <img src={bananas} className="home-img d-block w-100" alt="Bananas" />
+          <section>
+            <img src={logo} alt="logo" />
+            <h3>TU ALIADO EN PRODUCCIÓN AGRÍCOLA LIMPIA Y EFICIENTE</h3>
+            <p>Nuestra misión es generar cultivos mas eficientes y limpios para un mundo con alimentos y agricultura consciente.</p>
+          </section>
         </div>
-        <div className="carousel-item" data-bs-interval="5000">
-          <img src={camarones} className="d-block w-100" alt="Camarones" />
+        <div className="header carousel-item" data-bs-interval="5000">
+          <img src={camarones} className="home-img d-block w-100" alt="Camarones" />
+          <section>
+            <img src={logo} alt="logo" />
+            <h3>TU ALIADO EN PRODUCCIÓN AGRÍCOLA LIMPIA Y EFICIENTE</h3>
+            <p>Nuestra misión es generar cultivos mas eficientes y limpios para un mundo con alimentos y agricultura consciente.</p>
+          </section>
         </div>
       </div>
       <button className="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="prev">
