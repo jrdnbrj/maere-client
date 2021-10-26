@@ -4,6 +4,8 @@ import logo from '../assets/img/logo_2.svg'
 
 import bananas from '../assets/img/bananas.jpg'
 import camarones from '../assets/img/camarones.jpg'
+import frutas from '../assets/img/frutas2.jpg'
+import campo2 from '../assets/img/campo2.jpg'
 
 import symborg from '../assets/img/symborg.svg'
 import catawba from '../assets/img/catawba.svg'
@@ -27,6 +29,22 @@ const Home = () => {
         </div>
         <div className="header carousel-item" data-bs-interval="5000">
           <img src={camarones} className="home-img d-block w-100" alt="Camarones" />
+          <section>
+            <img src={logo} alt="logo" />
+            <h3>TU ALIADO EN PRODUCCIÓN AGRÍCOLA LIMPIA Y EFICIENTE</h3>
+            <p>Nuestra misión es generar cultivos mas eficientes y limpios para un mundo con alimentos y agricultura consciente.</p>
+          </section>
+        </div>
+        <div className="header carousel-item" data-bs-interval="5000">
+          <img src={frutas} className="home-img d-block w-100" alt="Frutas" />
+          <section>
+            <img src={logo} alt="logo" />
+            <h3>TU ALIADO EN PRODUCCIÓN AGRÍCOLA LIMPIA Y EFICIENTE</h3>
+            <p>Nuestra misión es generar cultivos mas eficientes y limpios para un mundo con alimentos y agricultura consciente.</p>
+          </section>
+        </div>
+        <div className="header carousel-item" data-bs-interval="5000">
+          <img src={campo2} className="home-img d-block w-100" alt="Campo Verde" />
           <section>
             <img src={logo} alt="logo" />
             <h3>TU ALIADO EN PRODUCCIÓN AGRÍCOLA LIMPIA Y EFICIENTE</h3>

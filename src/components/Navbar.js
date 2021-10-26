@@ -17,7 +17,6 @@ const Navbar = () => {
 
     const { loading, error, data } = useQuery(GET_CATEGORIES)
 
-
     return <nav className="navbar navbar-container navbar-expand-lg bg-light">
         <div className="container-fluid">
             <Link className="navbar-brand" to="/">
@@ -51,15 +50,6 @@ const Navbar = () => {
                                             </li>
                                         </div>
                                     })}
-                                    {/* <li><a href="/productos#bioestimulantes" className="dropdown-item">Bioestumilantes</a></li>
-                                    <hr className="dropdown-divider" />
-                                    <li><a href="/productos#biopesticidas" className="dropdown-item">Biopesticidas</a></li>
-                                    <hr className="dropdown-divider" />
-                                    <li><a href="/productos#biofertilizantes" className="dropdown-item">Biofertilizante</a></li>
-                                    <hr className="dropdown-divider" />
-                                    <li><a href="/productos#correctores" className="dropdown-item">Correctores de Suelo</a></li>
-                                    <hr className="dropdown-divider" />
-                                    <li><a href="/productos#fertilizantes" className="dropdown-item">Fertilizantes Foliares</a></li> */}
                                 </>}
                             </ul>
                         </div>

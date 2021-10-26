@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import { useQuery, gql } from '@apollo/client'
 
-import frutas from '../assets/img/frutas.jpg'
+import frutas from '../assets/img/frutas2.jpg'
 import logo from '../assets/img/logo_2.svg'
 
 import symborg from '../assets/img/symborg.svg'
@@ -59,8 +59,6 @@ const Productos = () => {
         else setBrand(b)
     }
 
-    categoryData && console.log(categoryData)
-
     categoryError && console.log(categoryError)
     error && console.log(error)
 
@@ -75,15 +73,10 @@ const Productos = () => {
         </section>
         <section className="bio-menu">
             {categoryData && categoryData.getCategories.map(category => {
-                return <span>
+                return <span key={category.sequence}>
                     <a href={`#${category.name.split(' ')[0]}`}>{category.name}</a>
                 </span> 
             })}
-            {/* <span><a href="#bioestimulantes">Bioestimulantes</a></span>
-            <span><a href="#biopesticidas">Biopesticidas</a></span>
-            <span><a href="#biofertilizantes">Biofertilizantes</a></span>
-            <span><a href="#correctores">Correctores de Suelo</a></span>
-            <span><a href="#fertilizantes">Fertilizantes Foliares</a></span> */}
         </section>
         { data &&
             <section className="products">
@@ -93,91 +86,28 @@ const Productos = () => {
                     <img src={acp} className="product-brand col" alt="acp" onClick={() => onChangeBrand('ACP')} />
                     <img src={fcnecsa} className="product-brand col" alt="fenecsa" onClick={() => onChangeBrand('Fenecsa')} />
                 </section>
-                <section className="bioestimulantes">
-                    <h2 id="Bioestimulantes">BIOESTIMULANTES</h2>
-                    <section className="row product-list" id="row-correction">
-                        { productsFilter.map(product => {
-                            if (product.category === 'Bioestimulantes') {
-                                return <section className="col-lg-3 col-12 col-sm-6" key={product.name}>
-                                    {/* <img src={product.image} alt={product.name} /> */}
-                                    <img src={prod} alt={product.name} />
-                                    <a href="https://www.catawbabrand.com/shields-up/" target="_blank" rel="noreferrer">
-                                        <span>{product.name}</span>
-                                    </a>
-                                </section>
-                            }
-                            return null
-                        }) }
+                {categoryData && categoryData.getCategories.map(category => {
+                    return <section className={category.name.split(' ')[0]} key={category.sequence}>
+                        <h2 id={category.name.split(' ')[0]}>{category.name.toUpperCase()}</h2>
+                        <section className="row product-list" id="row-correction">
+                            { productsFilter.map(product => {
+                                if (product.category === category.name) {
+                                    return <section className="col-lg-3 col-12 col-sm-6" key={product.name}>
+                                        {/* <img src={product.image} alt={product.name} /> */}
+                                        <img src={prod} alt={product.name} />
+                                        <a 
+                                            href="https://www.catawbabrand.com/shields-up/" 
+                                            target="_blank" rel="noreferrer"
+                                        >
+                                            <span>{product.name}</span>
+                                        </a>
+                                    </section>
+                                }
+                                return null
+                            }) }
+                        </section>
                     </section>
-                </section>
-                <section className="biopesticidas">
-                    <h2 id="Biopesticidas">BIOPESTICIDAS</h2>
-                    <section className="row product-list" id="row-correction">
-                        { productsFilter.map(product => {
-                            if (product.category === 'Biopesticidas') {
-                                return <section className="col-lg-3 col-12 col-sm-6" key={product.name}>
-                                    {/* <img src={product.image} alt={product.name} /> */}
-                                    <img src={prod} alt={product.name} />
-                                    <a href="https://www.catawbabrand.com/shields-up/" target="_blank" rel="noreferrer">
-                                        <span>{product.name}</span>
-                                    </a>
-                                </section>
-                            }
-                            return null
-                        }) }
-                    </section>
-                </section>
-                <section className="biofertilizantes">
-                    <h2 id="Biofertilizantes">BIOFERTILIZANTES</h2>
-                    <section className="row product-list" id="row-correction">
-                        { productsFilter.map(product => {
-                            if (product.category === 'Biofertilizantes') {
-                                return <section className="col-lg-3 col-12 col-sm-6" key={product.name}>
-                                    {/* <img src={product.image} alt={product.name} /> */}
-                                    <img src={prod} alt={product.name} />
-                                    <a href="https://www.catawbabrand.com/shields-up/" target="_blank" rel="noreferrer">
-                                        <span>{product.name}</span>
-                                    </a>
-                                </section>
-                            }
-                            return null
-                        }) }
-                    </section>
-                </section>
-                <section className="correctores">
-                    <h2 id="Borrectores">CORRECTORES DE SUELO</h2>
-                    <section className="row product-list" id="row-correction">
-                        { productsFilter.map(product => {
-                            if (product.category === 'Correctores de Suelo') {
-                                return <section className="col-lg-3 col-12 col-sm-6" key={product.name}>
-                                    {/* <img src={product.image} alt={product.name} /> */}
-                                    <img src={prod} alt={product.name} />
-                                    <a href="https://www.catawbabrand.com/shields-up/" target="_blank" rel="noreferrer">
-                                        <span>{product.name}</span>
-                                    </a>
-                                </section>
-                            }
-                            return null
-                        }) }
-                    </section>
-                </section>
-                <section className="fertilizantes">
-                    <h2 id="Fertilizantes">FERTILIZANTES FOLIARES</h2>
-                    <section className="row product-list" id="row-correction">
-                        { productsFilter.map(product => {
-                            if (product.category === 'Fertilizantes Foliares') {
-                                return <section className="col-lg-3 col-12 col-sm-6" key={product.name}>
-                                    {/* <img src={product.image} alt={product.name} /> */}
-                                    <img src={prod} alt={product.name} />
-                                    <a href="https://www.catawbabrand.com/shields-up/" target="_blank" rel="noreferrer">
-                                        <span>{product.name}</span>
-                                    </a>
-                                </section>
-                            }
-                            return null
-                        }) }
-                    </section>
-                </section>
+                }) }
             </section>
         }
     </>
