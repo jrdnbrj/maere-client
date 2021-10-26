@@ -12,6 +12,15 @@ import fcnecsa from '../assets/img/fcnecsa.svg'
 import prod from '../assets/img/prod.png'
 
 
+const GET_CATEGORIES = gql`
+    query getCategories {
+        getCategories {
+            name
+            sequence
+        }
+    }
+`
+
 const GET_PRODUCTOS = gql`
     query {
         getProducts {
@@ -29,6 +38,7 @@ const Productos = () => {
     const [productsFilter, setProductsFilter] = useState([])
     const [brand, setBrand] = useState('')
 
+    const { loading: categoryLoading, error: categoryError, data: categoryData } = useQuery(GET_CATEGORIES)
     const { loading, error, data } = useQuery(GET_PRODUCTOS)
 
     useEffect(() => {
@@ -49,6 +59,9 @@ const Productos = () => {
         else setBrand(b)
     }
 
+    categoryData && console.log(categoryData)
+
+    categoryError && console.log(categoryError)
     error && console.log(error)
 
     return <>
@@ -61,11 +74,16 @@ const Productos = () => {
             </section>
         </section>
         <section className="bio-menu">
-            <span><a href="#bioestimulantes">Bioestimulantes</a></span>
+            {categoryData && categoryData.getCategories.map(category => {
+                return <span>
+                    <a href={`#${category.name.split(' ')[0]}`}>{category.name}</a>
+                </span> 
+            })}
+            {/* <span><a href="#bioestimulantes">Bioestimulantes</a></span>
             <span><a href="#biopesticidas">Biopesticidas</a></span>
             <span><a href="#biofertilizantes">Biofertilizantes</a></span>
             <span><a href="#correctores">Correctores de Suelo</a></span>
-            <span><a href="#fertilizantes">Fertilizantes Foliares</a></span>
+            <span><a href="#fertilizantes">Fertilizantes Foliares</a></span> */}
         </section>
         { data &&
             <section className="products">
@@ -76,10 +94,10 @@ const Productos = () => {
                     <img src={fcnecsa} className="product-brand col" alt="fenecsa" onClick={() => onChangeBrand('Fenecsa')} />
                 </section>
                 <section className="bioestimulantes">
-                    <h2 id="bioestimulantes">BIOESTIMULANTES</h2>
+                    <h2 id="Bioestimulantes">BIOESTIMULANTES</h2>
                     <section className="row product-list" id="row-correction">
                         { productsFilter.map(product => {
-                            if (product.category === 'Bioestimulante') {
+                            if (product.category === 'Bioestimulantes') {
                                 return <section className="col-lg-3 col-12 col-sm-6" key={product.name}>
                                     {/* <img src={product.image} alt={product.name} /> */}
                                     <img src={prod} alt={product.name} />
@@ -93,10 +111,10 @@ const Productos = () => {
                     </section>
                 </section>
                 <section className="biopesticidas">
-                    <h2 id="biopesticidas">BIOPESTICIDAS</h2>
+                    <h2 id="Biopesticidas">BIOPESTICIDAS</h2>
                     <section className="row product-list" id="row-correction">
                         { productsFilter.map(product => {
-                            if (product.category === 'Biopesticida') {
+                            if (product.category === 'Biopesticidas') {
                                 return <section className="col-lg-3 col-12 col-sm-6" key={product.name}>
                                     {/* <img src={product.image} alt={product.name} /> */}
                                     <img src={prod} alt={product.name} />
@@ -110,10 +128,10 @@ const Productos = () => {
                     </section>
                 </section>
                 <section className="biofertilizantes">
-                    <h2 id="biofertilizantes">BIOFERTILIZANTES</h2>
+                    <h2 id="Biofertilizantes">BIOFERTILIZANTES</h2>
                     <section className="row product-list" id="row-correction">
                         { productsFilter.map(product => {
-                            if (product.category === 'Biofertilizante') {
+                            if (product.category === 'Biofertilizantes') {
                                 return <section className="col-lg-3 col-12 col-sm-6" key={product.name}>
                                     {/* <img src={product.image} alt={product.name} /> */}
                                     <img src={prod} alt={product.name} />
@@ -127,10 +145,10 @@ const Productos = () => {
                     </section>
                 </section>
                 <section className="correctores">
-                    <h2 id="correctores">CORRECTORES DE SUELO</h2>
+                    <h2 id="Borrectores">CORRECTORES DE SUELO</h2>
                     <section className="row product-list" id="row-correction">
                         { productsFilter.map(product => {
-                            if (product.category === 'Corrector de Suelo') {
+                            if (product.category === 'Correctores de Suelo') {
                                 return <section className="col-lg-3 col-12 col-sm-6" key={product.name}>
                                     {/* <img src={product.image} alt={product.name} /> */}
                                     <img src={prod} alt={product.name} />
@@ -144,10 +162,10 @@ const Productos = () => {
                     </section>
                 </section>
                 <section className="fertilizantes">
-                    <h2 id="fertilizantes">FERTILIZANTES FOLIARES</h2>
+                    <h2 id="Fertilizantes">FERTILIZANTES FOLIARES</h2>
                     <section className="row product-list" id="row-correction">
                         { productsFilter.map(product => {
-                            if (product.category === 'Fertilizante Foliar') {
+                            if (product.category === 'Fertilizantes Foliares') {
                                 return <section className="col-lg-3 col-12 col-sm-6" key={product.name}>
                                     {/* <img src={product.image} alt={product.name} /> */}
                                     <img src={prod} alt={product.name} />

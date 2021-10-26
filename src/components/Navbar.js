@@ -1,9 +1,23 @@
 import { Link } from 'react-router-dom'
+import { useQuery, gql } from '@apollo/client'
 
 import logo from '../assets/img/logo_1.svg'
 
 
+const GET_CATEGORIES = gql`
+    query getCategories {
+        getCategories {
+            name
+            sequence
+        }
+    }
+`
+
 const Navbar = () => {
+
+    const { loading, error, data } = useQuery(GET_CATEGORIES)
+
+
     return <nav className="navbar navbar-container navbar-expand-lg bg-light">
         <div className="container-fluid">
             <Link className="navbar-brand" to="/">
@@ -26,15 +40,27 @@ const Navbar = () => {
                                 <span className="visually-hidden">Toggle Dropdown</span>
                             </button>
                             <ul className="dropdown-menu dropdown-menu-dark">
-                                <li><a href="/productos#bioestimulantes" className="dropdown-item">Bioestumilantes</a></li>
-                                <li><hr className="dropdown-divider" /></li>
-                                <li><a href="/productos#biopesticidas" className="dropdown-item">Biopesticidas</a></li>
-                                <li><hr className="dropdown-divider" /></li>
-                                <li><a href="/productos#biofertilizantes" className="dropdown-item">Biofertilizante</a></li>
-                                <li><hr className="dropdown-divider" /></li>
-                                <li><a href="/productos#correctores" className="dropdown-item">Correctores de Suelo</a></li>
-                                <li><hr className="dropdown-divider" /></li>
-                                <li><a href="/productos#fertilizantes" className="dropdown-item">Fertilizantes Foliares</a></li>
+                                {data && <>
+                                    {data.getCategories.map(category => {
+                                        return <div key={category.sequence}>
+                                            { category.sequence !== 1 && <hr className="dropdown-divider" /> }
+                                            <li>
+                                                <a href={`/productos#${category.name.split(' ')[0]}`} className="dropdown-item">
+                                                    {category.name}
+                                                </a>
+                                            </li>
+                                        </div>
+                                    })}
+                                    {/* <li><a href="/productos#bioestimulantes" className="dropdown-item">Bioestumilantes</a></li>
+                                    <hr className="dropdown-divider" />
+                                    <li><a href="/productos#biopesticidas" className="dropdown-item">Biopesticidas</a></li>
+                                    <hr className="dropdown-divider" />
+                                    <li><a href="/productos#biofertilizantes" className="dropdown-item">Biofertilizante</a></li>
+                                    <hr className="dropdown-divider" />
+                                    <li><a href="/productos#correctores" className="dropdown-item">Correctores de Suelo</a></li>
+                                    <hr className="dropdown-divider" />
+                                    <li><a href="/productos#fertilizantes" className="dropdown-item">Fertilizantes Foliares</a></li> */}
+                                </>}
                             </ul>
                         </div>
                     </li>
