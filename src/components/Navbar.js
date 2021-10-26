@@ -17,6 +17,9 @@ const Navbar = () => {
 
     const { loading, error, data } = useQuery(GET_CATEGORIES)
 
+    error && console.log(error)
+    loading && console.log('Cargando Categorias') 
+
     return <nav className="navbar navbar-container navbar-expand-lg bg-light">
         <div className="container-fluid">
             <Link className="navbar-brand" to="/">

@@ -30,19 +30,19 @@ const Contactos = () => {
                 <p>Recibirás las últimas noticias sobre nuestros productos y tips agrícolas de nueva generación.</p>
                 <form>
                     <div className="form-floating">
-                        <input type="text" className="form-control" placeholder="Juan Mera" />
+                        <input type="text" className="form-control" placeholder="Juan Mera" required />
                         <label>Nombre</label>
                     </div>
                     <div className="form-floating">
-                        <input type="text" className="form-control" placeholder="0999999999" />
+                        <input type="text" className="form-control" placeholder="0999999999" required />
                         <label>Teléfono</label>
                     </div>
                     <div className="form-floating">
-                        <input type="email" className="form-control" placeholder="nombre@maere.com" />
+                        <input type="email" className="form-control" placeholder="nombre@maere.com" required />
                         <label>Correo Electrónico</label>
                     </div>
                     <div className="form-floating">
-                        <textarea type="text" className="form-control" placeholder="Escrute tu mensaje aquí" id="mensaje" />
+                        <textarea type="text" className="form-control" placeholder="Escrute tu mensaje aquí" id="mensaje" required />
                         <label>Mensaje</label>
                     </div>
                     <button type="submit" className="submit">Enviar</button>

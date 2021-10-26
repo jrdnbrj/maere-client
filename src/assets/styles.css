@@ -247,7 +247,7 @@
     font-size: 1rem;
 }
 
-.form-floating .form-control {
+.home-52 .form-floating .form-control {
     border: 0;
     border-bottom: #173E3C 2.5px solid;
     border-radius: 0;
@@ -632,4 +632,15 @@
     justify-content: center;
     margin: 1.5rem 0;
     flex-direction: column;
+}
+
+/* ADMIN ADMIN ADMIN ADMIN */
+
+.admin .nav-link.active {
+    background-color: #173E3C;
+}
+
+.remove-contact {
+    background-color: transparent;
+    border: 0;
 }

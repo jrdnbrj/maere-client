@@ -5,6 +5,7 @@ import Home from './pages/Home'
 import Nosotros from './pages/Nosotros'
 import Contactos from './pages/Contactos'
 import Productos from './pages/Productos'
+import Admin from './pages/Admin'
 
 
 const Routes = () => {
@@ -16,6 +17,7 @@ const Routes = () => {
           <Route exact path='/nosotros' component={Nosotros} />
           <Route exact path='/contactos' component={Contactos} />
           <Route exact path='/productos' component={Productos} />
+          <Route exact path='/admin' component={Admin} />
         </Switch>
       </Layout>
     </BrowserRouter>

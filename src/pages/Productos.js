@@ -62,6 +62,9 @@ const Productos = () => {
     categoryError && console.log(categoryError)
     error && console.log(error)
 
+    if (categoryLoading) return <div>Cargando Categorias...</div>
+    if (loading) return <div>Cargando Productos...</div>
+    
     return <>
         <section className="header">
             <img src={frutas} className="frutas" alt="frutas" />
