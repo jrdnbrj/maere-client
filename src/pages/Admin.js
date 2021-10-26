@@ -1,6 +1,8 @@
 import Productos from '../components/Admin/Productos'
 import Categorias from '../components/Admin/Categorias'
 import Contactos from '../components/Admin/Contactos'
+import Maere from '../components/Admin/Maere'
+import Configuracion from '../components/Admin/Configuracion'
 
 
 const Admin = () => {
@@ -16,10 +18,10 @@ const Admin = () => {
                 Contactos
             </button>
             <button className="nav-link" data-bs-toggle="tab" data-bs-target="#nav-maere" type="button" role="tab" aria-controls="nav-maere" aria-selected="false">
-                Maere
+                Maere Info
             </button>
             <button className="nav-link" data-bs-toggle="tab" data-bs-target="#nav-settings" type="button" role="tab" aria-controls="nav-settings" aria-selected="false">
-                Settings
+                Configuración
             </button>
         </nav>
         <div className="tab-content mt-5" id="nav-tabContent">
@@ -33,10 +35,10 @@ const Admin = () => {
                 <Contactos />
             </div>
             <div className="tab-pane fade" id="nav-maere" role="tabpanel" aria-labelledby="nav-maere-tab">
-                Maere
+                <Maere />
             </div>
             <div className="tab-pane fade" id="nav-settings" role="tabpanel" aria-labelledby="nav-settings-tab">
-                Settings
+                <Configuracion />
             </div>
         </div>
     </div>

@@ -38,6 +38,7 @@ const Productos = () => {
     }
 
     return <>
+        <button className="btn btn-secondary mb-3">Agregar Producto</button>
         {data && data.getProducts.map(producto => {
             return <form key={producto.name} className="product-form" onSubmit={saveProduct}>
                 <div className="form-floating mb-3">

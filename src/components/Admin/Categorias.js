@@ -20,6 +20,7 @@ const Productos = () => {
     error && console.log(error)
 
     return <>
+        <button className="btn btn-secondary mb-3">Agregar Categoria</button>
         <ul className="list-group">
             {data.getCategories.map(category => {
                 return <li className="list-group-item" key={category.sequence}>
