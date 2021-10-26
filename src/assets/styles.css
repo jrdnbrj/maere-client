@@ -403,6 +403,7 @@
 
 .contact-form {
     background-image: url('./img/flores.png');
+    background-color: #D7D8CF;
     background-size: cover;
 }
 
@@ -614,10 +615,21 @@
 
 .product-list img {
     width: 75%;
+    align-self: center;
+}
+
+.product-list a {
+    font-family: Poppins Light;
+    font-size: 1.1rem;
+    margin-top: 5%;
+    align-self: center;
+    text-decoration: none;
+    color: #000;
 }
 
 .product-list .col-lg-3 {
     display: flex;
     justify-content: center;
     margin: 1.5rem 0;
+    flex-direction: column;
 }
