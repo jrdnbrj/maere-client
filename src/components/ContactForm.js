@@ -3,7 +3,7 @@ import { useQuery, useMutation, gql } from "@apollo/client"
 
 
 const GET_CONTACT_INFO = gql`
-    query getContactinfo {
+    query {
         getContactInfo {
             title
             text

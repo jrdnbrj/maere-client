@@ -11,7 +11,7 @@ import fcnecsa from '../assets/img/fcnecsa.svg'
 
 
 const GET_CONTACT_INFO = gql`
-    query getContactinfo {
+    query {
         getContactInfo {
             title
             text

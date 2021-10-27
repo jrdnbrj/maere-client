@@ -651,3 +651,9 @@
     background-color: transparent;
     border: 0;
 }
+
+.maere-carousel textarea, .maere-home textarea,
+.maere-prod textarea, .maere-us textarea,
+.maere-contact textarea {
+    height: 100px !important;
+}

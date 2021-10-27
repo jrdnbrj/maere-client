@@ -1,102 +1,135 @@
+import { useQuery, useMutation, gql } from '@apollo/client'
+
+
+const GET_CAROUSEL = gql`
+    query {
+        getCarousel {
+            id
+            title
+            text
+            image
+            sequence
+        }
+    }
+`
+
+const GET_HOME = gql`
+    query {
+        getHome {
+            id
+            title
+            text
+        }
+    }
+`
+
+const GET_PRODUCT_HEADER = gql`
+    query {
+        getProductHeader {
+            id
+            title
+            text
+        }
+    }
+`
+
+const GET_US = gql`
+    query {
+        getUs {
+            id
+            title
+            text
+            sequence
+        }
+    }
+`
+
+const GET_CONTACT_INFO = gql`
+    query {
+        getContactInfo {
+            id
+            title
+            text
+        }
+    }
+`
+
 const Maere = () => {
+
+    const { loading, error, data } = useQuery(GET_CAROUSEL)
+    const { loading: loadingHome, error: errorHome, data: dataHome } = useQuery(GET_HOME)
+    const { loading: loadingProduct, error: errorProduct, data: dataProduct } = useQuery(GET_PRODUCT_HEADER)
+    const { loading: loadingUs, error: errorUs, data: dataUs } = useQuery(GET_US)
+    const { loading: loadingContact, error: errorContact, data: dataContact } = useQuery(GET_CONTACT_INFO)
+
+    const saveCarousel = (e, id) => {
+        e.preventDefault()
+        console.log('Guardando Carousel.', id)
+    }
+
+    const saveHome = (e, id) => {
+        e.preventDefault()
+        console.log('Guardando Home.', id)
+    }
+
+    const saveProductHeader = (e, id) => {
+        e.preventDefault()
+        console.log('Guardando Product Header.', id)
+    }
+
+    const saveUs = (e, id) => {
+        e.preventDefault()
+        console.log('Guardando US.', id)
+    }
+
+    const saveContactInfo = (e, id) => {
+        e.preventDefault()
+        console.log('Guardando Contact Info.', id)
+    }
+
+    error && console.log(error)
+    errorHome && console.log(errorHome)
+    errorProduct && console.log(errorProduct)
+    errorUs && console.log(errorUs)
+    errorContact && console.log(errorContact)
+
+    if (loading) return <h4>Cargando Carrusel...</h4>
+    if (loadingHome) return <h4>Cargando Home...</h4>
+    if (loadingProduct) return <h4>Cargando Productos...</h4>
+    if (loadingUs) return <h4>Cargando Nosotros...</h4>
+    if (loadingContact) return <h4>Cargando Información de Contacto...</h4>
+
     return <section>
-        <section>
-            <h1 className="display-6">Carrusel</h1>
-            <form>
-                <div className="form-floating mb-3">
-                    <textarea className="form-control" defaultValue="TU ALIADO EN PRODUCCIÓN AGRÍCOLA LIMPIA Y EFICIENTE" />
-                    <label>Título</label>
-                </div>
-                <div className="form-floating mb-3">
-                    <textarea className="form-control" defaultValue="Nuestra misión es generar cultivos mas eficientes y limpios para un mundo con alimentos y agricultura consciente." />
-                    <label>Texto</label>
-                </div>
-                <div className="form-floating mb-3">
-                    <input type="number" className="form-control" defaultValue="1" />
-                    <label>Secuencia</label>
-                </div>
-                <div className="input-group mb-3">
-                    <input type="file" className="form-control" />
-                    <label 
-                        className="input-group-text" 
-                        onClick={() => window.open('http://localhost:8000/static/bananas.jpg', '_blank')}>
-                        Ver Imagen Actual
-                    </label>
-                </div>
-                <button className="btn btn-success mb-5">Guardar</button>
-            </form>
-            <form>
-                <div className="form-floating mb-3">
-                    <textarea className="form-control" defaultValue="TU ALIADO EN PRODUCCIÓN AGRÍCOLA LIMPIA Y EFICIENTE" />
-                    <label>Título</label>
-                </div>
-                <div className="form-floating mb-3">
-                    <textarea className="form-control" defaultValue="Nuestra misión es generar cultivos mas eficientes y limpios para un mundo con alimentos y agricultura consciente." />
-                    <label>Texto</label>
-                </div>
-                <div className="form-floating mb-3">
-                    <input type="number" className="form-control" defaultValue="2" />
-                    <label>Secuencia</label>
-                </div>
-                <div className="input-group mb-3">
-                    <input type="file" className="form-control" />
-                    <label 
-                        className="input-group-text" 
-                        onClick={() => window.open('http://localhost:8000/static/frutas2.jpg', '_blank')}>
-                        Ver Imagen Actual
-                    </label>
-                </div>
-                <button className="btn btn-success mb-5">Guardar</button>
-            </form>
-            <form>
-                <div className="form-floating mb-3">
-                    <textarea className="form-control" defaultValue="TU ALIADO EN PRODUCCIÓN AGRÍCOLA LIMPIA Y EFICIENTE" />
-                    <label>Título</label>
-                </div>
-                <div className="form-floating mb-3">
-                    <textarea className="form-control" defaultValue="Nuestra misión es generar cultivos mas eficientes y limpios para un mundo con alimentos y agricultura consciente." />
-                    <label>Texto</label>
-                </div>
-                <div className="form-floating mb-3">
-                    <input type="number" className="form-control" defaultValue="3" />
-                    <label>Secuencia</label>
-                </div>
-                <div className="input-group mb-3">
-                    <input type="file" className="form-control" />
-                    <label 
-                        className="input-group-text" 
-                        onClick={() => window.open('http://localhost:8000/static/campo2.jpg', '_blank')}>
-                        Ver Imagen Actual
-                    </label>
-                </div>
-                <button className="btn btn-success mb-5">Guardar</button>
-            </form>
-            <form>
-                <div className="form-floating mb-3">
-                    <textarea className="form-control" defaultValue="TU ALIADO EN PRODUCCIÓN AGRÍCOLA LIMPIA Y EFICIENTE" />
-                    <label>Título</label>
-                </div>
-                <div className="form-floating mb-3">
-                    <textarea className="form-control" defaultValue="Nuestra misión es generar cultivos mas eficientes y limpios para un mundo con alimentos y agricultura consciente." />
-                    <label>Texto</label>
-                </div>
-                <div className="form-floating mb-3">
-                    <input type="number" className="form-control" defaultValue="4" />
-                    <label>Secuencia</label>
-                </div>
-                <div className="input-group mb-3">
-                    <input type="file" className="form-control" />
-                    <label 
-                        className="input-group-text" 
-                        onClick={() => window.open('http://localhost:8000/static/camarones.jpg', '_blank')}>
-                        Ver Imagen Actual
-                    </label>
-                </div>
-                <button className="btn btn-success mb-5">Guardar</button>
-            </form>
+        <section className="maere-carousel">
+            <h1 className="display-6 ms-3">Carrusel</h1>
+            <section className="row" id="row-correction">
+                {data.getCarousel.map(item => {
+                    return <form className="col-sm-12 col-lg-6" key={item.sequence} onSubmit={e => saveCarousel(e, item.id)}>
+                        <div className="form-floating mb-3">
+                            <textarea className="form-control" defaultValue={item.title} />
+                            <label>Título</label>
+                        </div>
+                        <div className="form-floating mb-3">
+                            <textarea className="form-control" defaultValue={item.text} />
+                            <label>Texto</label>
+                        </div>
+                        <div className="form-floating mb-3">
+                            <input type="number" className="form-control" defaultValue={item.sequence} />
+                            <label>Secuencia</label>
+                        </div>
+                        <div className="input-group mb-3">
+                            <input type="file" className="form-control" />
+                            <label className="input-group-text" onClick={() => window.open(item.image, '_blank')}>
+                                Ver Imagen Actual
+                            </label>
+                        </div>
+                        <button className="btn btn-success mb-5" type="submit">Guardar</button>
+                    </form>
+                })}
+            </section>
         </section>   
-        <section>
-            <h1 className="display-6">Home</h1>
+        <section className="maere-home">
+            <h1 className="display-6 ms-3">Home</h1>
             <form>
                 <div className="form-floating mb-3">
                     <textarea className="form-control" defaultValue="Revolucionamos la manera en la que desarrollas tus cultivos con resultados medibles" />
@@ -109,8 +142,8 @@ const Maere = () => {
                 <button className="btn btn-success mb-5">Guardar</button>
             </form>
         </section>
-        <section>
-            <h1 className="display-6">Productos</h1>
+        <section className="maere-prod">
+            <h1 className="display-6 ms-3">Productos</h1>
             <form>
                 <div className="form-floating mb-3">
                     <textarea className="form-control" defaultValue="TU ALIADO EN PRODUCCIÓN AGRÍCOLA LIMPIA Y EFICIENTE" />
@@ -123,8 +156,8 @@ const Maere = () => {
                 <button className="btn btn-success mb-5">Guardar</button>
             </form>
         </section>
-        <section>
-            <h1 className="display-6">Nosotros</h1>
+        <section className="maere-us">
+            <h1 className="display-6 ms-3">Nosotros</h1>
             <form>
                 <div className="form-floating mb-3">
                     <textarea className="form-control" defaultValue="¿QUIÉNES SOMOS?" />
@@ -148,8 +181,8 @@ const Maere = () => {
                 <button className="btn btn-success mb-5">Guardar</button>
             </form>
         </section>
-        <section>
-            <h1 className="display-6">Información de Contacto</h1>
+        <section className="maere-contact">
+            <h1 className="display-6 ms-3">Información de Contacto</h1>
             <form>
                 <div className="form-floating mb-3">
                     <textarea className="form-control" defaultValue="¿QUIÉNES SOMOS?" />
