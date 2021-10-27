@@ -27,9 +27,6 @@ const Productos = () => {
                     {category.name}
                 </li>
             })}
-            <li className="list-group-item">
-                Nueva categoria
-            </li>
         </ul>
     </>
 }

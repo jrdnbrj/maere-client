@@ -8,7 +8,7 @@ import catawba from '../assets/img/catawba.svg'
 import acp from '../assets/img/acp.svg'
 import fcnecsa from '../assets/img/fcnecsa.svg'
 
-import campo from '../assets/img/campo.jpg'
+import libro from '../assets/img/libro.jpg'
 
 
 const GET_CAROUSEL = gql`
@@ -67,7 +67,7 @@ const Home = () => {
         <Link to="/productos"><button>Productos</button></Link>
       </section>
       <section className="col-12 col-lg-6 campo">
-        <img src={campo} alt="Campo" />
+        <img src={libro} alt="Persona escribiendo en un libro" />
       </section>
     </section>
     <section className="home-4">

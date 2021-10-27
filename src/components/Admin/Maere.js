@@ -1,4 +1,4 @@
-import { useQuery, useMutation, gql } from '@apollo/client'
+import { useQuery, gql } from '@apollo/client'
 
 
 const GET_CAROUSEL = gql`
@@ -50,6 +50,7 @@ const GET_CONTACT_INFO = gql`
             id
             title
             text
+            sequence
         }
     }
 `
@@ -127,92 +128,76 @@ const Maere = () => {
                     </form>
                 })}
             </section>
-        </section>   
-        <section className="maere-home">
-            <h1 className="display-6 ms-3">Home</h1>
-            <form>
-                <div className="form-floating mb-3">
-                    <textarea className="form-control" defaultValue="Revolucionamos la manera en la que desarrollas tus cultivos con resultados medibles" />
-                    <label>Título</label>
-                </div>
-                <div className="form-floating mb-3">
-                    <textarea className="form-control" defaultValue="Con la asesoría de nuestros expertos en campo, garantizamos resultados medibles y crecimiento de producción a mediano y largo plazo en todas las áreas de producción agrícola en Ecuador." rows="3" />
-                    <label>Texto</label>
-                </div>
-                <button className="btn btn-success mb-5">Guardar</button>
-            </form>
         </section>
-        <section className="maere-prod">
-            <h1 className="display-6 ms-3">Productos</h1>
-            <form>
-                <div className="form-floating mb-3">
-                    <textarea className="form-control" defaultValue="TU ALIADO EN PRODUCCIÓN AGRÍCOLA LIMPIA Y EFICIENTE" />
-                    <label>Título</label>
-                </div>
-                <div className="form-floating mb-3">
-                    <textarea className="form-control" defaultValue="Nuestra misión es generar cultivos mas eficientes y limpios para un mundo con alimentos y agricultura consciente." rows="3" />
-                    <label>Texto</label>
-                </div>
-                <button className="btn btn-success mb-5">Guardar</button>
-            </form>
+        <hr className="dropdown-divider" />
+        <section className="row" id="row-correction">
+            <section className="maere-home col-sm-12 col-lg-6">
+                <h1 className="display-6">Home</h1>
+                    {dataHome && <>
+                        <form onSubmit={e => saveHome(e, dataHome.getHome.id)}>
+                            <div className="form-floating mb-3">
+                                <textarea className="form-control" defaultValue={dataHome.getHome.title} />
+                                <label>Título</label>
+                            </div>
+                            <div className="form-floating mb-3">
+                                <textarea className="form-control" defaultValue={dataHome.getHome.text} />
+                                <label>Texto</label>
+                            </div>
+                            <button className="btn btn-success mb-5" type="submit">Guardar</button>
+                        </form>
+                    </>}
+            </section>
+            <section className="maere-prod col-sm-12 col-lg-6">
+                <h1 className="display-6">Productos</h1>
+                    {dataProduct && <>
+                        <form onSubmit={e => saveProductHeader(e, dataProduct.getProductHeader.id)}>
+                            <div className="form-floating mb-3">
+                                <textarea className="form-control" defaultValue={dataProduct.getProductHeader.title} />
+                                <label>Título</label>
+                            </div>
+                            <div className="form-floating mb-3">
+                                <textarea className="form-control" defaultValue={dataProduct.getProductHeader.text} />
+                                <label>Texto</label>
+                            </div>
+                            <button className="btn btn-success mb-5" type="submit">Guardar</button>
+                        </form>
+                    </>}
+            </section>
         </section>
-        <section className="maere-us">
-            <h1 className="display-6 ms-3">Nosotros</h1>
-            <form>
-                <div className="form-floating mb-3">
-                    <textarea className="form-control" defaultValue="¿QUIÉNES SOMOS?" />
-                    <label>Título</label>
-                </div>
-                <div className="form-floating mb-3">
-                    <textarea className="form-control" defaultValue="Somos una empresa agrícola, enfocada en la introducción de productos innovadores para los cultivos, que permitan maximizar rendimientos de manera amigable con el medio ambiente." rows="3" />
-                    <label>Texto</label>
-                </div>
-                <button className="btn btn-success mb-5">Guardar</button>
-            </form>
-            <form>
-                <div className="form-floating mb-3">
-                    <textarea className="form-control" defaultValue="¿Qué hacemos?" />
-                    <label>Título</label>
-                </div>
-                <div className="form-floating mb-3">
-                    <textarea className="form-control" defaultValue="Proveemos a nuestros clientes de alternativas innovadoras y diferenciadas que le permitan obtener una alta rentabilidad en sus manejos y cuyos resultados sean sostenibles en el tiempo." rows="3" />
-                    <label>Texto</label>
-                </div>
-                <button className="btn btn-success mb-5">Guardar</button>
-            </form>
-        </section>
-        <section className="maere-contact">
-            <h1 className="display-6 ms-3">Información de Contacto</h1>
-            <form>
-                <div className="form-floating mb-3">
-                    <textarea className="form-control" defaultValue="¿QUIÉNES SOMOS?" />
-                    <label>Título</label>
-                </div>
-                <div className="form-floating mb-3">
-                    <textarea className="form-control" defaultValue="Somos una empresa agrícola, enfocada en la introducción de productos innovadores para los cultivos, que permitan maximizar rendimientos de manera amigable con el medio ambiente." rows="3" />
-                    <label>Texto</label>
-                </div>
-                <div className="input-group mb-3">
-                    <input type="file" className="form-control" />
-                    <label 
-                        className="input-group-text" 
-                        onClick={() => window.open('http://localhost:8000/static/campo.jpg', '_blank')}>
-                        Ver Imagen Actual
-                    </label>
-                </div>
-                <button className="btn btn-success mb-5">Guardar</button>
-            </form>
-            <form>
-                <div className="form-floating mb-3">
-                    <textarea className="form-control" defaultValue="Cualquiera que sea la pregunta, ¡estamos aquí para ayudar!" />
-                    <label>Título</label>
-                </div>
-                <div className="form-floating mb-3">
-                    <textarea className="form-control" defaultValue="Recibirás las últimas noticias sobre nuestros productos y tips agrícolas de nueva generación." rows="3" />
-                    <label>Texto</label>
-                </div>
-                <button className="btn btn-success mb-5">Guardar</button>
-            </form>
+        <hr className="dropdown-divider" />
+        <section className="row" id="row-correction">
+            <section className="maere-us col-sm-12 col-lg-6">
+                <h1 className="display-6">Nosotros</h1>
+                {dataUs && dataUs.getUs.map(item => {
+                    return <form key={item.sequence} onSubmit={e => saveUs(e, item.id)}>
+                        <div className="form-floating mb-3">
+                            <textarea className="form-control" defaultValue={item.title} />
+                            <label>Título</label>
+                        </div>
+                        <div className="form-floating mb-3">
+                            <textarea className="form-control" defaultValue={item.text} />
+                            <label>Texto</label>
+                        </div>
+                        <button className="btn btn-success mb-5" type="submit">Guardar</button>
+                    </form>
+                })}
+            </section>
+            <section className="maere-contact col-sm-12 col-lg-6">
+                <h1 className="display-6">Información de Contacto</h1>
+                {dataContact && dataContact.getContactInfo.map(item => {
+                    return <form key={item.sequence} onSubmit={e => saveContactInfo(e, item.id)}>
+                        <div className="form-floating mb-3">
+                            <textarea className="form-control" defaultValue={item.title} />
+                            <label>Título</label>
+                        </div>
+                        <div className="form-floating mb-3">
+                            <textarea className="form-control" defaultValue={item.text} />
+                            <label>Texto</label>
+                        </div>
+                        <button className="btn btn-success mb-5" type="submit">Guardar</button>
+                    </form>
+                })}
+            </section>
         </section>
     </section>
 }

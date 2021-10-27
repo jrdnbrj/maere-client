@@ -1,6 +1,6 @@
 import { useQuery, gql } from '@apollo/client'
 
-import campo from '../assets/img/campo.jpg'
+import doctor from '../assets/img/doctor.jpg'
 import logo from '../assets/img/logo_3.svg'
 
 import symborg from '../assets/img/symborg.svg'
@@ -34,7 +34,7 @@ const Nosotros = () => {
                 </>}
             </section>
             <section className="col-lg-6 order-1 order-lg-2 campo">
-                <img src={campo} alt="Campo" />
+                <img src={doctor} alt="Doctor Veterinario" />
             </section>
         </section>
         <section className="row hacemos" id="row-correction">
