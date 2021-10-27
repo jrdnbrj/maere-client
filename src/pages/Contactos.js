@@ -1,3 +1,5 @@
+import { useQuery, gql } from "@apollo/client"
+
 import ContactForm from '../components/ContactForm'
 
 import logo from '../assets/img/logo_3.svg'
@@ -8,11 +10,27 @@ import acp from '../assets/img/acp.svg'
 import fcnecsa from '../assets/img/fcnecsa.svg'
 
 
+const GET_CONTACT_INFO = gql`
+    query getContactinfo {
+        getContactInfo {
+            title
+            text
+        }
+    }
+`
+
 const Contactos = () => {
+
+    const { error, data } = useQuery(GET_CONTACT_INFO)
+
+    error && console.log(error)
+
     return <>
         <section className="contact-header">
-            <h1>¿QUIÉNES SOMOS?</h1>
-            <p>Somos una empresa agrícola enfocada en la introducción de productos innoavodres para los cultivos que permitan maximizar rendimientos de manera amigable con el medio ambiente.</p>
+            {data && <>
+                <h1>{data.getContactInfo[0].title}</h1>
+                <p>{data.getContactInfo[0].text}</p>
+            </>}
         </section>
         <section className="row contact-form" id="row-correction">
             <section className="col-12 col-lg-6 order-lg-1 order-2 contact-social">

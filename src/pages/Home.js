@@ -1,11 +1,7 @@
 import { Link } from 'react-router-dom'
+import { useQuery, gql } from "@apollo/client"
 
 import logo from '../assets/img/logo_2.svg'
-
-import bananas from '../assets/img/bananas.jpg'
-import camarones from '../assets/img/camarones.jpg'
-import frutas from '../assets/img/frutas2.jpg'
-import campo2 from '../assets/img/campo2.jpg'
 
 import symborg from '../assets/img/symborg.svg'
 import catawba from '../assets/img/catawba.svg'
@@ -15,42 +11,46 @@ import fcnecsa from '../assets/img/fcnecsa.svg'
 import campo from '../assets/img/campo.jpg'
 
 
+const GET_CAROUSEL = gql`
+  query {
+    getCarousel {
+      title
+      text
+      image
+    }
+  }
+`
+
+const GET_HOME = gql`
+  query {
+    getHome {
+      title
+      text
+    }
+  }
+`
+
 const Home = () => {
+
+  const { error, data } = useQuery(GET_CAROUSEL)
+  const { error: error2, data: data2 } = useQuery(GET_HOME)
+
+  error && console.log(error)
+  error2 && console.log(error2)
+
   return <>
     <div id="carouselExampleInterval" className="carousel slide carousel-fade" data-bs-ride="carousel">
       <div className="carousel-inner">
-        <div className="header carousel-item active" data-bs-interval="5000">
-          <img src={bananas} className="home-img d-block w-100" alt="Bananas" />
-          <section>
-            <img src={logo} alt="logo" />
-            <h3>TU ALIADO EN PRODUCCIÓN AGRÍCOLA LIMPIA Y EFICIENTE</h3>
-            <p>Nuestra misión es generar cultivos mas eficientes y limpios para un mundo con alimentos y agricultura consciente.</p>
-          </section>
-        </div>
-        <div className="header carousel-item" data-bs-interval="5000">
-          <img src={camarones} className="home-img d-block w-100" alt="Camarones" />
-          <section>
-            <img src={logo} alt="logo" />
-            <h3>TU ALIADO EN PRODUCCIÓN AGRÍCOLA LIMPIA Y EFICIENTE</h3>
-            <p>Nuestra misión es generar cultivos mas eficientes y limpios para un mundo con alimentos y agricultura consciente.</p>
-          </section>
-        </div>
-        <div className="header carousel-item" data-bs-interval="5000">
-          <img src={frutas} className="home-img d-block w-100" alt="Frutas" />
-          <section>
-            <img src={logo} alt="logo" />
-            <h3>TU ALIADO EN PRODUCCIÓN AGRÍCOLA LIMPIA Y EFICIENTE</h3>
-            <p>Nuestra misión es generar cultivos mas eficientes y limpios para un mundo con alimentos y agricultura consciente.</p>
-          </section>
-        </div>
-        <div className="header carousel-item" data-bs-interval="5000">
-          <img src={campo2} className="home-img d-block w-100" alt="Campo Verde" />
-          <section>
-            <img src={logo} alt="logo" />
-            <h3>TU ALIADO EN PRODUCCIÓN AGRÍCOLA LIMPIA Y EFICIENTE</h3>
-            <p>Nuestra misión es generar cultivos mas eficientes y limpios para un mundo con alimentos y agricultura consciente.</p>
-          </section>
-        </div>
+        {data && data.getCarousel.map((item, index) => {
+          return <div className={`header carousel-item ${!index && 'active'}`} data-bs-interval="5000" key={index}>
+            <img src={item.image} className="home-img d-block w-100" alt="Bananas" />
+            <section>
+              <img src={logo} alt="logo" />
+              <h3>{item.title}</h3>
+              <p>{item.text}</p>
+            </section>
+          </div>
+        })}
       </div>
       <button className="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="prev">
         <span className="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -63,9 +63,8 @@ const Home = () => {
     </div>
     <section className="row" id="row-correction">
       <section className="col-12 col-lg-6 home-31">
-        <h2>Revolucionamos la manera en la que desarrollas tus cultivos con resultados medibles</h2>
-        <p>Con la asesoría de nuestros expertos en campo, garantizamos resultados medibles y crecimiento de producción a mediano y largo plazo en todas las áreas de producción agrícola en Ecuador.</p>
-          <Link to="/productos"><button>Productos</button></Link>
+        {data2 && <> <h2>{data2.getHome.title}</h2><p>{data2.getHome.text}</p> </>}
+        <Link to="/productos"><button>Productos</button></Link>
       </section>
       <section className="col-12 col-lg-6 campo">
         <img src={campo} alt="Campo" />

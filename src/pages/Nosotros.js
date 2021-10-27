@@ -1,3 +1,5 @@
+import { useQuery, gql } from '@apollo/client'
+
 import campo from '../assets/img/campo.jpg'
 import logo from '../assets/img/logo_3.svg'
 
@@ -7,12 +9,29 @@ import acp from '../assets/img/acp.svg'
 import fcnecsa from '../assets/img/fcnecsa.svg'
 
 
+const GET_US = gql`
+    query {
+        getUs {
+            title
+            text
+            sequence
+        }
+    }
+`
+
 const Nosotros = () => {
+
+    const { error, data } = useQuery(GET_US)
+
+    error && console.log(error)
+
     return <>
         <section className="row" id="row-correction">
             <section className="col-lg-6 order-2 order-lg-1 us">
-                <h1>¿QUIÉNES SOMOS?</h1>
-                <p>Somos una empresa agrícola, enfocada en la introducción de productos innovadores para los cultivos, que permitan maximizar rendimientos de manera amigable con el medio ambiente.</p>
+                {data && <>
+                    <h1>{data.getUs[0].title}</h1>
+                    <p>{data.getUs[0].text}</p>
+                </>}
             </section>
             <section className="col-lg-6 order-1 order-lg-2 campo">
                 <img src={campo} alt="Campo" />
@@ -23,8 +42,10 @@ const Nosotros = () => {
                 <img src={logo} alt="Logo" />
             </section>
             <section className="col-lg-6">
-                <h1>¿Qué hacemos?</h1>
-                <p>Proveemos a nuestros clientes de alternativas innovadoras y diferenciadas que le permitan obtener una alta rentabilidad en sus manejos y cuyos resultados sean sostenibles en el tiempo.</p>
+                {data && <>
+                    <h1>{data.getUs[1].title}</h1>
+                    <p>{data.getUs[1].text}</p>
+                </>}
             </section>
         </section>
         <section className="home-4" id="marcas-us">

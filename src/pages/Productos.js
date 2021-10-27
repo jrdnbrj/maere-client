@@ -12,6 +12,15 @@ import fcnecsa from '../assets/img/fcnecsa.svg'
 import prod from '../assets/img/prod.png'
 
 
+const GET_PRODUCT_HEADER = gql`
+    query {
+        getProductHeader {
+            title
+            text
+        }
+    }
+`
+
 const GET_CATEGORIES = gql`
     query getCategories {
         getCategories {
@@ -38,19 +47,19 @@ const Productos = () => {
     const [productsFilter, setProductsFilter] = useState([])
     const [brand, setBrand] = useState('')
 
-    const { loading: categoryLoading, error: categoryError, data: categoryData } = useQuery(GET_CATEGORIES)
-    const { loading, error, data } = useQuery(GET_PRODUCTOS)
-
-    useEffect(() => {
-        data && setProducts(data.getProducts)
-        data && setProductsFilter(data.getProducts)
-        // eslint-disable-next-line
-    }, [data])
+    const { error: headerError, data: headerData } = useQuery(GET_PRODUCT_HEADER)
+    const { error: categoryError, data: categoryData } = useQuery(GET_CATEGORIES)
+    const { error, data } = useQuery(GET_PRODUCTOS, {
+        onCompleted: (data) => {
+            setProducts(data.getProducts)
+            setProductsFilter(data.getProducts)
+        },
+        fetchPolicy: 'cache-and-network'
+    })
 
     useEffect(() => {
         if (brand === '') setProductsFilter(products)
-        else
-            setProductsFilter(products.filter(product => product.formulator === brand))
+        else setProductsFilter(products.filter(product => product.formulator === brand))
         // eslint-disable-next-line
     }, [brand])
 
@@ -59,19 +68,19 @@ const Productos = () => {
         else setBrand(b)
     }
 
+    headerError && console.log(headerError)
     categoryError && console.log(categoryError)
     error && console.log(error)
 
-    if (categoryLoading) return <div>Cargando Categorias...</div>
-    if (loading) return <div>Cargando Productos...</div>
-    
     return <>
         <section className="header">
             <img src={frutas} className="frutas" alt="frutas" />
             <section>
                 <img src={logo} alt="logo" />
-                <h3>TU ALIADO EN PRODUCCIÓN AGRÍCOLA LIMPIA Y EFICIENTE</h3>
-                <p>Nuestra misión es generar cultivos mas eficientes y limpios para un mundo con alimentos y agricultura consciente.</p>
+                {headerData && <>
+                    <h3>{headerData.getProductHeader.title}</h3>
+                    <p>{headerData.getProductHeader.text}</p>
+                </>}
             </section>
         </section>
         <section className="bio-menu">

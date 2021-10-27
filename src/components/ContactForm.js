@@ -1,6 +1,15 @@
 import { createRef, useState } from 'react'
-import { useMutation, gql } from "@apollo/client"
+import { useQuery, useMutation, gql } from "@apollo/client"
 
+
+const GET_CONTACT_INFO = gql`
+    query getContactinfo {
+        getContactInfo {
+            title
+            text
+        }
+    }
+`
 
 const CREATE_CONTACT = gql`
     mutation ($name: String, $email: String, $phone: String, $message: String) {
@@ -15,13 +24,14 @@ const CREATE_CONTACT = gql`
 
 const ContactForm = () => {
 
-    let name = createRef('')
-    let email = createRef('')
-    let phone = createRef('')
-    let message = createRef('')
+    const name = createRef('')
+    const email = createRef('')
+    const phone = createRef('')
+    const message = createRef('')
 
     const [messageForm, setMessageForm] = useState('')
 
+    const { error, data } = useQuery(GET_CONTACT_INFO)
     const [createContact, { loading }] = useMutation(CREATE_CONTACT, {
         onCompleted: () => setMessageForm('El formulario fue enviado con éxito.'),
         onError: () => setMessageForm('Hubo un error al enviar el formulario.')
@@ -41,9 +51,13 @@ const ContactForm = () => {
         })
     }
 
+    error && console.error(error)
+
     return <>
-        <p>Cualquiera que sea la pregunta, ¡estamos aquí para ayudar!</p>
-        <p>Recibirás las últimas noticias sobre nuestros productos y tips agrícolas de nueva generación.</p>
+        {data && <>
+            <p>{data.getContactInfo[1].title}</p>
+            <p>{data.getContactInfo[1].text}</p>
+        </>}
         <form onSubmit={saveContact}>
             <div className="form-floating">
                 <input ref={name} type="text" className="form-control" placeholder="Juan Mera" required />
