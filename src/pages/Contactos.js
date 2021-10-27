@@ -1,3 +1,5 @@
+import ContactForm from '../components/ContactForm'
+
 import logo from '../assets/img/logo_3.svg'
 
 import symborg from '../assets/img/symborg.svg'
@@ -26,27 +28,7 @@ const Contactos = () => {
                 </section>
             </section>
             <section className="col-12 col-lg-6 order-lg-2 order-1 home-52">
-                <p>Cualquiera que sea la pregunta, ¡estamos aquí para ayudar!</p>
-                <p>Recibirás las últimas noticias sobre nuestros productos y tips agrícolas de nueva generación.</p>
-                <form>
-                    <div className="form-floating">
-                        <input type="text" className="form-control" placeholder="Juan Mera" required />
-                        <label>Nombre</label>
-                    </div>
-                    <div className="form-floating">
-                        <input type="text" className="form-control" placeholder="0999999999" required />
-                        <label>Teléfono</label>
-                    </div>
-                    <div className="form-floating">
-                        <input type="email" className="form-control" placeholder="nombre@maere.com" required />
-                        <label>Correo Electrónico</label>
-                    </div>
-                    <div className="form-floating">
-                        <textarea type="text" className="form-control" placeholder="Escrute tu mensaje aquí" id="mensaje" required />
-                        <label>Mensaje</label>
-                    </div>
-                    <button type="submit" className="submit">Enviar</button>
-                </form>
+                <ContactForm />
             </section>
         </section>
         <section className="home-4">

@@ -634,6 +634,12 @@
     flex-direction: column;
 }
 
+.contact-message {
+    font-family: Poppins Light;
+    color: #173E3C;
+    margin-left: 5%;
+}
+
 /* ADMIN ADMIN ADMIN ADMIN */
 
 .admin .nav-link.active {
