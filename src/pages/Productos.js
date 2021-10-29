@@ -104,7 +104,7 @@ const Productos = () => {
                         <section className="row product-list" id="row-correction">
                             { productsFilter.map(product => {
                                 if (product.category === category.name) {
-                                    return <section className="col-lg-3 col-12 col-sm-6" key={product.name}>
+                                    return <section className="col-lg-3 col-12 col-sm-6" data-aos="fade-up" key={product.name}>
                                         {/* <img src={product.image} alt={product.name} /> */}
                                         <img src={prod} alt={product.name} />
                                         <a 

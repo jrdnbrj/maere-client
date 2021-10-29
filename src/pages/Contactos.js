@@ -50,15 +50,15 @@ const Contactos = () => {
             </section>
         </section>
         <section className="home-4">
-            <h2>Representamos a los productos más innovadores del mercado</h2>
+            <h2 data-aos="fade-down">Representamos a los productos más innovadores del mercado</h2>
             <section className="row" id="row-correction">
                 <div className="col-sm-2 col-lg-4" />
-                <img src={symborg} className="col-sm-4 col-lg-1" alt="Symborg" />
-                <img src={catawba} className="col-sm-4 col-lg-1" alt="Catawba" />
+                <img src={symborg} className="col-sm-4 col-lg-1" alt="Symborg" data-aos="fade-right" />
+                <img src={catawba} className="col-sm-4 col-lg-1" alt="Catawba" data-aos="fade-right" />
                 <div className="col-sm-2 lg-hidden" />
                 <div className="col-sm-2 lg-hidden" />
-                <img src={acp} className="col-sm-4 col-lg-1" alt="acp" />
-                <img src={fcnecsa} className="col-sm-4 col-lg-1" alt="fcnecsa" />
+                <img src={acp} className="col-sm-4 col-lg-1" alt="acp" data-aos="fade-left" />
+                <img src={fcnecsa} className="col-sm-4 col-lg-1" alt="fcnecsa" data-aos="fade-left" />
                 <div className="col-sm-2 col-lg-4" />
             </section>
         </section>

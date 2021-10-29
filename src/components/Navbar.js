@@ -1,3 +1,4 @@
+import { useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { useQuery, gql } from '@apollo/client'
 
@@ -17,10 +18,34 @@ const Navbar = () => {
 
     const { loading, error, data } = useQuery(GET_CATEGORIES)
 
+    useEffect(() => {
+        const autohide = document.querySelector('.autohide')
+        let lastScroll = 0
+
+        window.onscroll = e => {
+            const currentScroll = document.documentElement.scrollTop
+
+            if (lastScroll <= currentScroll) {
+                if (currentScroll < 107)
+                    autohide.classList.remove('navbar-sticky')
+                else {
+                    autohide.classList.remove('scrolled-up')
+                    autohide.classList.add('scrolled-down')
+                }
+            } else {
+                autohide.classList.remove('scrolled-down')
+                autohide.classList.add('scrolled-up')
+                autohide.classList.add('navbar-sticky')
+            }
+            
+            lastScroll = currentScroll
+        }
+    })
+
     error && console.log(error)
     loading && console.log('Cargando Categorias') 
 
-    return <nav className="navbar navbar-container navbar-expand-lg bg-light">
+    return <nav className="navbar navbar-container navbar-expand-lg bg-light autohide">
         <div className="container-fluid">
             <Link className="navbar-brand" to="/">
                 <img src={logo} className="logo-nav" alt="Maere Logo" />

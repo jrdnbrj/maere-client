@@ -63,23 +63,26 @@ const Home = () => {
     </div>
     <section className="row" id="row-correction">
       <section className="col-12 col-lg-6 home-31">
-        {data2 && <> <h2>{data2.getHome.title}</h2><p>{data2.getHome.text}</p> </>}
-        <Link to="/productos"><button>Productos</button></Link>
+        {data2 && <>
+          <h2 data-aos="zoom-in">{data2.getHome.title}</h2>
+          <p data-aos="zoom-in">{data2.getHome.text}</p> 
+        </>}
+        <Link to="/productos" data-aos="zoom-in"><button>Productos</button></Link>
       </section>
       <section className="col-12 col-lg-6 campo">
         <img src={libro} alt="Persona escribiendo en un libro" />
       </section>
     </section>
     <section className="home-4">
-      <h2>Representamos a los productos más innovadores del mercado</h2>
+      <h2 data-aos="fade-down">Representamos a los productos más innovadores del mercado</h2>
       <section className="row" id="row-correction">
         <div className="col-sm-2 col-lg-4" />
-        <img src={symborg} className="col-sm-4 col-lg-1" alt="Symborg" />
-        <img src={catawba} className="col-sm-4 col-lg-1" alt="Catawba" />
+        <img src={symborg} className="col-sm-4 col-lg-1" alt="Symborg" data-aos="fade-right" />
+        <img src={catawba} className="col-sm-4 col-lg-1" alt="Catawba" data-aos="fade-right" />
         <div className="col-sm-2 lg-hidden" />
         <div className="col-sm-2 lg-hidden" />
-        <img src={acp} className="col-sm-4 col-lg-1" alt="acp" />
-        <img src={fcnecsa} className="col-sm-4 col-lg-1" alt="fcnecsa" />
+        <img src={acp} className="col-sm-4 col-lg-1" alt="acp" data-aos="fade-left" />
+        <img src={fcnecsa} className="col-sm-4 col-lg-1" alt="fcnecsa" data-aos="fade-left" />
         <div className="col-sm-2 col-lg-4" />
       </section>
     </section>

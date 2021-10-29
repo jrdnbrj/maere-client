@@ -131,8 +131,18 @@
 }
 
 .logo-nav:hover {
-    animation: wobble-hor-bottom 0.8s both;
+    animation: scale-up-center-2 0.4s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
 }
+
+@keyframes scale-up-center-2 {
+    0% {
+      transform: scale(1);
+    }
+    100% {
+      transform: scale(1.1);
+    }
+}  
+  
 
 @keyframes wobble-hor-bottom {
     0%,
@@ -190,9 +200,21 @@
     }
 }
 
+.scrolled-down{
+    transform: translateY(-100%); transition: all 0.4s ease-in-out;
+}
+
+.scrolled-up{
+    transform: translateY(0); transition: all 0.2s ease-in-out;
+}
+
+.navbar-sticky {
+    position: sticky;
+    top: 0;
+    z-index: 1001;
+}
+
 /* HOME HOME HOME HOME */
-
-
 
 .home-31 {
     background-color: #379E56;
@@ -219,6 +241,35 @@
     border-radius: 0.5rem;
     font-family: Poppins Semi Bold;
     font-size: 1.3rem;
+}
+
+.home-31 button:hover {
+    background-color: #173e3cda;
+    animation: jello-horizontal 0.9s both;
+}
+
+@keyframes jello-horizontal {
+    0% {
+        transform: scale3d(1, 1, 1);
+    }
+    30% {
+        transform: scale3d(1.1, 0.9, 1);
+    }
+    40% {
+        transform: scale3d(0.9, 1.1, 1);
+    }
+    50% {
+        transform: scale3d(1.10, 0.9, 1);
+    }
+    65% {
+        transform: scale3d(0.95, 1.05, 1);
+    }
+    75% {
+        transform: scale3d(1.05, 0.95, 1);
+    }
+    100% {
+        transform: scale3d(1, 1, 1);
+    }
 }
 
 .home-4 {
@@ -319,6 +370,10 @@
     margin-top: 5%;
 }
 
+.submit:hover {
+    background-color: #173e3cda;
+}
+
 @media (min-width: 991px) {
     .lg-hidden {
         display: none;
@@ -358,6 +413,10 @@
     color: #D7D8CF;
 }
 
+.social i:hover {
+    color: #d7d8cfdc;
+}
+
 /* NOSOTROS NOSOTROS NOSOTROS NOSOTROS */
 
 .us {
@@ -373,7 +432,6 @@
     display: block;
     font-size: 2.5rem;
     font-family: Poppins Bold;
-    animation: roll-in-blurred-left 0.8s cubic-bezier(0.230, 1.000, 0.320, 1.000) both;
 }
 
 .us p {
@@ -381,20 +439,6 @@
     font-family: Poppins Light;
     font-size: 1.05rem;
     margin-top: 5%;
-    animation: roll-in-blurred-left 2.5s cubic-bezier(0.230, 1.000, 0.320, 1.000) both;
-}
-
-@keyframes roll-in-blurred-left {
-    0% {
-      transform: translateX(-1000px) rotate(-720deg);
-      filter: blur(50px);
-      opacity: 0;
-    }
-    100% {
-      transform: translateX(0) rotate(0deg);
-      filter: blur(0);
-      opacity: 1;
-    }
 }
 
 .hacemos {
@@ -406,29 +450,7 @@
 .hacemos section {
     padding: 10% 5%;
 }
-
-.hacemos section h1 {
-    animation: roll-in-blurred-right 0.8s cubic-bezier(0.230, 1.000, 0.320, 1.000) both;
-}
-
-.hacemos section p {
-    animation: roll-in-blurred-right 2.5s cubic-bezier(0.230, 1.000, 0.320, 1.000) both;
-
-}
-
-@keyframes roll-in-blurred-right {
-    0% {
-      transform: translateX(1000px) rotate(720deg);
-      filter: blur(50px);
-      opacity: 0;
-    }
-    100% {
-      transform: translateX(0) rotate(0deg);
-      filter: blur(0);
-      opacity: 1;
-    }
-}
-
+  
 .hacemos img {
     width: 65%;
     filter: invert(48%) sepia(13%) saturate(3207%) hue-rotate(138deg) brightness(30%) contrast(80%);
@@ -471,25 +493,23 @@
 .contact-header h1 {
     font-family: Poppins Bold;
     font-size: 2.75rem;
-    animation: slide-in-elliptic-top-fwd 0.7s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+    animation: slide-in-left-2 0.6s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
 }
 
 .contact-header p {
     font-family: Poppins Light;
     font-size: 1.05rem;
     margin-top: 5%;
-    animation: slide-in-elliptic-top-fwd 1.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+    animation: slide-in-left-2 0.9s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
 }
 
-@keyframes slide-in-elliptic-top-fwd {
+@keyframes slide-in-left-2 {
     0% {
-      transform: translateY(-600px) rotateX(-30deg) scale(0);
-      transform-origin: 50% 100%;
+      transform: translateX(-1000px);
       opacity: 0;
     }
     100% {
-      transform: translateY(0) rotateX(0) scale(1);
-      transform-origin: 50% 1400px;
+      transform: translateX(0);
       opacity: 1;
     }
 }
@@ -558,7 +578,7 @@
     left: 6%;
     right: 61%;
     color: #FFF;
-    animation: slide-in-left 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+    animation: slide-in-left 1s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
 }
 
 @keyframes slide-in-left {
