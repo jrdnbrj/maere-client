@@ -16,7 +16,6 @@ const GET_CAROUSEL = gql`
 const GET_HOME = gql`
     query {
         getHome {
-            id
             title
             text
         }
@@ -26,7 +25,6 @@ const GET_HOME = gql`
 const GET_PRODUCT_HEADER = gql`
     query {
         getProductHeader {
-            id
             title
             text
         }
@@ -68,14 +66,14 @@ const Maere = () => {
         console.log('Guardando Carousel.', id)
     }
 
-    const saveHome = (e, id) => {
+    const saveHome = e => {
         e.preventDefault()
-        console.log('Guardando Home.', id)
+        console.log('Guardando Home.')
     }
 
-    const saveProductHeader = (e, id) => {
+    const saveProductHeader = e => {
         e.preventDefault()
-        console.log('Guardando Product Header.', id)
+        console.log('Guardando Product Header.')
     }
 
     const saveUs = (e, id) => {
@@ -134,7 +132,7 @@ const Maere = () => {
             <section className="maere-home col-sm-12 col-lg-6">
                 <h1 className="display-6">Home</h1>
                     {dataHome && <>
-                        <form onSubmit={e => saveHome(e, dataHome.getHome.id)}>
+                        <form onSubmit={saveHome}>
                             <div className="form-floating mb-3">
                                 <textarea className="form-control" defaultValue={dataHome.getHome.title} />
                                 <label>Título</label>
@@ -150,7 +148,7 @@ const Maere = () => {
             <section className="maere-prod col-sm-12 col-lg-6">
                 <h1 className="display-6">Productos</h1>
                     {dataProduct && <>
-                        <form onSubmit={e => saveProductHeader(e, dataProduct.getProductHeader.id)}>
+                        <form onSubmit={saveProductHeader}>
                             <div className="form-floating mb-3">
                                 <textarea className="form-control" defaultValue={dataProduct.getProductHeader.title} />
                                 <label>Título</label>

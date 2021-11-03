@@ -37,9 +37,11 @@ const GET_PRODUCTOS = gql`
             formulator
             category
             image
+            url
         }
     }
 `
+
 
 const Productos = () => {
 
@@ -107,10 +109,7 @@ const Productos = () => {
                                     return <section className="col-lg-3 col-12 col-sm-6" data-aos="fade-up" key={product.name}>
                                         {/* <img src={product.image} alt={product.name} /> */}
                                         <img src={prod} alt={product.name} />
-                                        <a 
-                                            href="https://www.catawbabrand.com/shields-up/" 
-                                            target="_blank" rel="noreferrer"
-                                        >
+                                        <a href={product.url} target="_blank" rel="noreferrer">
                                             <span>{product.name}</span>
                                         </a>
                                     </section>
