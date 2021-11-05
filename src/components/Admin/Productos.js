@@ -63,9 +63,19 @@ const Productos = () => {
                 refetch()
             } else alert('Error al editar el producto. Inténtalo de nuevo.')
         },
-        onError: error => {
-            console.log(error.networkError.result.errors[0].message)
-            alert('Error al editar el producto. Inténtalo de nuevo.')
+        onError: ({ networkError: { result: { errors: err } } }) => {
+            console.log(err[0].message)
+            if (err[0].message.includes("'name':"))
+                alert('Ocurrió un error con el campo del Nombre. Inténtalo de nuevo.')
+            else if (err[0].message.includes("'formulator':"))
+                alert('Ocurrió un error con el campo del Formulador. Inténtalo de nuevo.')
+            else if (err[0].message.includes("'category':"))
+                alert('Ocurrió un error con el campo de la Categoría. Inténtalo de nuevo.')
+            else if (err[0].message.includes("'image':"))
+                alert('Ocurrió un error con el campo de la Imagen. Inténtalo de nuevo.')
+            else if (err[0].message.includes("'url':"))
+                alert('Ocurrió un error con el campo de la URL. Inténtalo de nuevo.')
+            else alert('Error al editar el producto. Inténtalo de nuevo.')
         }
     })
 
@@ -76,8 +86,8 @@ const Productos = () => {
                 refetch()
             } else alert('Error al eliminar el producto. Inténtalo de nuevo.')
         },
-        onError: error => {
-            console.log(error.networkError.result.errors[0].message)
+        onError: ({ networkError: { result: { errors: err } } }) => {
+            console.log(err[0].message)
             alert('Error al eliminar el producto. Inténtalo de nuevo.')
         }
     })
@@ -89,9 +99,19 @@ const Productos = () => {
                 refetch()
             } else alert('Error al crear el producto. Inténtalo de nuevo.')
         },
-        onError: error => {
-            console.log(error.networkError.result.errors[0].message)
-            alert('Error al crear el producto. Inténtalo de nuevo.')
+        onError: ({ networkError: { result: { errors: err } } }) => {
+            console.log(err[0].message)
+            if (err[0].message.includes("'name':"))
+                alert('Ocurrió un error con el campo del Nombre. Inténtalo de nuevo.')
+            else if (err[0].message.includes("'formulator':"))
+                alert('Ocurrió un error con el campo del Formulador. Inténtalo de nuevo.')
+            else if (err[0].message.includes("'category':"))
+                alert('Ocurrió un error con el campo de la Categoría. Inténtalo de nuevo.')
+            else if (err[0].message.includes("'image':"))
+                alert('Ocurrió un error con el campo de la Imagen. Inténtalo de nuevo.')
+            else if (err[0].message.includes("'url':"))
+                alert('Ocurrió un error con el campo de la URL. Inténtalo de nuevo.')
+            else alert('Error al crear el producto. Inténtalo de nuevo.')
         }
     })
 
@@ -261,13 +281,18 @@ const Productos = () => {
                     <div className="form-text">La imagen debe tener una dimensión de 500x650.</div>
                     <div className="input-group mb-3">
                         <input type="file" className="form-control" id={`image-${i}`} />
-                        <label className="input-group-text" onClick={() => window.open(producto.image, '_blank')}>
-                            <i className="bi bi-image-fill" title="Ver Imagen Actual" />
+                        <label 
+                            className="input-group-text" title="Ver Imagen Actual"
+                            onClick={() => window.open(producto.image, '_blank')}
+                        >
+                            <i className="bi bi-image-fill" />
                         </label>
                     </div>
                     <button className="btn btn-sm btn-success mb-5 me-2" type="submit">Guardar</button>
-                    <button className="btn btn-sm btn-danger mb-5" type="button" onClick={e => removeProduct(producto.id, producto.name)}>
-                        <i className="bi bi-trash-fill" title="Eliminar Producto" />
+                    <button 
+                        className="btn btn-sm btn-danger mb-5" type="button" title="Eliminar Producto"
+                        onClick={e => removeProduct(producto.id, producto.name)}>
+                        <i className="bi bi-trash-fill" />
                     </button>
                 </form>
             })}

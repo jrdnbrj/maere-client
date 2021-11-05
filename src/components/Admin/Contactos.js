@@ -1,4 +1,4 @@
-import { useQuery, useMutation, gql } from "@apollo/client"
+import { useQuery, useMutation, gql } from '@apollo/client'
 
 
 const GET_CONTACTS = gql`
@@ -65,6 +65,7 @@ const Contactos = () => {
                             <td>
                                 <button 
                                     className="remove-contact" 
+                                    title="Eliminar Información de Contacto"
                                     onClick={() => removeContact(contact.id, contact.name)}
                                 >
                                     <i className="bi bi-trash" />

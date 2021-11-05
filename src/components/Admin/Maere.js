@@ -92,12 +92,16 @@ const Maere = () => {
                 refetch()
             } else alert('Error al crear un item del Carrusel. Inténtalo de nuevo.')
         },
-        onError: error => {
-            const err = error.networkError.result.errors[0].message
-            console.log(err)
-
-            if (err.includes("'sequence':"))
+        onError: ({ networkError: { result: { errors: err } } }) => {
+            console.log(err[0].message)
+            if (err[0].message.includes("'sequence':"))
                 alert('El número de la secuencia ya existe.')
+            else if (err[0].message.includes("'title':"))
+                alert('Ocurrió un error con el campo del Título. Inténtalo de nuevo.')
+            else if (err[0].message.includes("'text':"))
+                alert('Ocurrió un error con el campo del Texto. Inténtalo de nuevo.')
+            else if (err[0].message.includes("'image':"))
+                alert('Ocurrió un error con el campo de la Imagen. Inténtalo de nuevo.')
             else alert('Error al editar el item del Carrusel. Inténtalo de nuevo.')
         }
     })
@@ -109,14 +113,18 @@ const Maere = () => {
                 refetch()
             } else alert('Error al editar el item del Carrusel. Inténtalo de nuevo.')
         },
-        onError: error => {
-            const err = error.networkError.result.errors[0].message
-            console.log(err)
-
-            if (err.includes("'sequence':"))
+        onError: ({ networkError: { result: { errors: err } } }) => {
+            console.log(err[0].message)
+            if (err[0].message.includes("'sequence':"))
                 alert('El número de la secuencia ya existe.')
+            else if (err[0].message.includes("'title':"))
+                alert('Ocurrió un error con el campo del Título. Inténtalo de nuevo.')
+            else if (err[0].message.includes("'text':"))
+                alert('Ocurrió un error con el campo del Texto. Inténtalo de nuevo.')
+            else if (err[0].message.includes("'image':"))
+                alert('Ocurrió un error con el campo de la Imagen. Inténtalo de nuevo.')
             else alert('Error al editar el item del Carrusel. Inténtalo de nuevo.')
-        },
+        }
     })
 
     const [deleteCarousel] = useMutation(DELETE_CAROUSEL_ITEM, {
@@ -124,8 +132,8 @@ const Maere = () => {
             if (deleteCarousel.result) refetch()
             else alert('Error al eliminar el item del Carrusel. Inténtalo de nuevo.')
         },
-        onError: error => {
-            console.log(error.networkError.result.errors[0].message)
+        onError: ({ networkError: { result: { errors: err } } }) => {
+            console.log(err[0].message)
             alert('Error al eliminar el item del Carrusel. Inténtalo de nuevo.')
         }
     })
@@ -285,16 +293,20 @@ const Maere = () => {
                         <div className="form-text">La imagen debe tener una dimensión de 2x1.</div>
                         <div className="input-group mb-3">
                             <input type="file" id={`img-${i}`} className="form-control" />
-                            <label className="input-group-text" onClick={() => window.open(item.image, '_blank')}>
-                                <i className="bi bi-image-fill" title="Ver Imagen Actual" />
+                            <label 
+                                className="input-group-text" title="Ver Imagen Actual" 
+                                onClick={() => window.open(item.image, '_blank')}
+                            >
+                                <i className="bi bi-image-fill" />
                             </label>
                         </div>
                         <button className="btn btn-sm btn-success mb-5 me-2" type="submit">Guardar</button>
                         <button 
                             className="btn btn-sm btn-danger mb-5" type="button" 
+                            title="Eliminar Item del Carrusel"
                             onClick={() => removeCarousel(item.id, item.title, item.text)}
                         >
-                            <i className="bi bi-trash-fill" title="Eliminar Producto" />
+                            <i className="bi bi-trash-fill" />
                         </button>
                     </form>
                 })}

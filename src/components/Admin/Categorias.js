@@ -55,9 +55,11 @@ const Categorias = () => {
             } else 
                 alert('Hubo un error al editar el nombre de la categoria. Inténtalo de nuevo.')
         },
-        onError: error => {
-            console.log(error.networkError.result.errors[0].message)
-            alert('Hubo un error al editar el nombre de la categoria. Inténtalo de nuevo.')
+        onError: ({ networkError: { result: { errors: err } } }) => {
+            console.log(err[0].message)
+            if (err[0].message.includes("'name':"))
+                alert('Ya existe una categoria con ese nombre. Vuelve a intentarlo.')
+            else alert('Hubo un error al editar el nombre de la categoria. Inténtalo de nuevo.')
         }
     })
 
@@ -70,9 +72,11 @@ const Categorias = () => {
             } else 
                 alert('Hubo un error al crear la categoria. Inténtalo de nuevo.')
         },
-        onError: error => {
-            console.log(error.networkError.result.errors[0].message)
-            alert('Hubo un error al crear la categoria. Inténtalo de nuevo.')
+        onError: ({ networkError: { result: { errors: err } } }) => {
+            console.log(err[0].message)
+            if (err[0].message.includes("'name':"))
+                alert('Ya existe una categoria con ese nombre. Vuelve a intentarlo.')
+            else alert('Hubo un error al crear la categoria. Inténtalo de nuevo.')
         }
     })
 
@@ -84,8 +88,8 @@ const Categorias = () => {
             } else 
                 alert('Hubo un error al eliminar la categoria. Inténtalo de nuevo.')
         },
-        onError: error => {
-            console.log(error.networkError.result.errors[0].message)
+        onError: ({ networkError: { result: { errors: err } } }) => {
+            console.log(err[0].message)
             alert('Hubo un error al eliminar la categoria. Inténtalo de nuevo.')
         }
     })
