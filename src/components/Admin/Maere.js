@@ -340,20 +340,20 @@ const Maere = () => {
         editProductHeader({ variables: { title, text } })
     }
 
-    const saveUs = (e, id) => {
+    const saveUs = (e, id, i) => {
         e.preventDefault()
 
-        const title = document.getElementById('us-title').value
-        const text = document.getElementById('us-text').value
+        const title = document.getElementById(`us-title-${i}`).value
+        const text = document.getElementById(`us-text-${i}`).value
 
         editUs({ variables: { id, title, text } })
     }
 
-    const saveContactInfo = (e, id) => {
+    const saveContactInfo = (e, id, i) => {
         e.preventDefault()
 
-        const title = document.getElementById('contact-title').value
-        const text = document.getElementById('contact-text').value
+        const title = document.getElementById(`contact-title-${i}`).value
+        const text = document.getElementById(`contact-text-${i}`).value
 
         editContactInfo({ variables: { id, title, text } })
     }
@@ -443,11 +443,17 @@ const Maere = () => {
                     {dataProduct && <>
                         <form onSubmit={saveProductHeader}>
                             <div className="form-floating mb-3">
-                                <textarea className="form-control" id="product-title" defaultValue={dataProduct.getProductHeader.title} />
+                                <textarea 
+                                    className="form-control" id="product-title" 
+                                    defaultValue={dataProduct.getProductHeader.title} 
+                                />
                                 <label>Título</label>
                             </div>
                             <div className="form-floating mb-3">
-                                <textarea className="form-control" id="product-text" defaultValue={dataProduct.getProductHeader.text} />
+                                <textarea 
+                                    className="form-control" id="product-text" 
+                                    defaultValue={dataProduct.getProductHeader.text} 
+                                />
                                 <label>Texto</label>
                             </div>
                             <button className="btn btn-sm btn-success mb-5" type="submit">Guardar</button>
@@ -459,14 +465,14 @@ const Maere = () => {
         <section className="row">
             <section className="maere-us col-sm-12 col-lg-6">
                 <h1 className="display-6">Nosotros</h1>
-                {dataUs && dataUs.getUs.map(item => {
-                    return <form key={item.sequence} onSubmit={e => saveUs(e, item.id)}>
+                {dataUs && dataUs.getUs.map((item, i) => {
+                    return <form key={item.sequence} onSubmit={e => saveUs(e, item.id, i)}>
                         <div className="form-floating mb-3">
-                            <textarea className="form-control" id="us-title" defaultValue={item.title} />
+                            <textarea className="form-control" id={`us-title-${i}`} defaultValue={item.title} />
                             <label>Título</label>
                         </div>
                         <div className="form-floating mb-3">
-                            <textarea className="form-control" id="us-text" defaultValue={item.text} />
+                            <textarea className="form-control" id={`us-text-${i}`} defaultValue={item.text} />
                             <label>Texto</label>
                         </div>
                         <button className="btn btn-sm btn-success mb-5" type="submit">Guardar</button>
@@ -475,14 +481,14 @@ const Maere = () => {
             </section>
             <section className="maere-contact col-sm-12 col-lg-6">
                 <h1 className="display-6">Información de Contacto</h1>
-                {dataContact && dataContact.getContactInfo.map(item => {
-                    return <form key={item.sequence} onSubmit={e => saveContactInfo(e, item.id)}>
+                {dataContact && dataContact.getContactInfo.map((item, i) => {
+                    return <form key={item.sequence} onSubmit={e => saveContactInfo(e, item.id, i)}>
                         <div className="form-floating mb-3">
-                            <textarea className="form-control" id="contact-title" defaultValue={item.title} />
+                            <textarea className="form-control" id={`contact-title-${i}`} defaultValue={item.title} />
                             <label>Título</label>
                         </div>
                         <div className="form-floating mb-3">
-                            <textarea className="form-control" id="contact-text" defaultValue={item.text} />
+                            <textarea className="form-control" id={`contact-text-${i}`} defaultValue={item.text} />
                             <label>Texto</label>
                         </div>
                         <button className="btn btn-sm btn-success mb-5" type="submit">Guardar</button>
