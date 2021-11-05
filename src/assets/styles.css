@@ -792,6 +792,61 @@
     height: 100px !important;
 }
 
+.category-list {
+    margin-right: 60%;
+}
+
+.category-list li {
+    padding: 0.5rem 0.3rem 0.5rem 1rem;
+}
+
+.category-list input {
+    padding: 0.375rem 0.2rem;
+}
+
+@media (max-width: 990px) {
+    .category-list {
+        margin-right: 35%;
+    }
+}
+
+@media (max-width: 500px) {
+    .category-list {
+        margin-right: 20%;
+    }
+}
+
+@media (max-width: 350px) {
+    .category-list {
+        margin-right: 5%;
+    }
+}
+
+.category-input {
+    display: flex;
+    justify-content: space-between;
+}
+
+.category-input span {
+    align-self: center;
+}
+
+.category-input .bi-check-circle {
+    font-size: 1.5rem;
+}
+
+.category-input .bi-check-circle:hover {
+    color: #00C851;
+}
+
+.category-input .bi-trash {
+    font-size: 1.5rem;
+}
+
+.bi-trash:hover {
+    color: #F44336;
+}
+
 /* MODAL MODAL MODAL MODAL MODAL MODAL MODAL */
 
 .modal-container {

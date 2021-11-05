@@ -118,11 +118,8 @@ const Productos = () => {
     }
 
     const removeProduct = (id, name) => {
-        console.log('Producto eliminado.', id)
-        if (window.confirm(`¿Deseas eliminar "${name}" de productos?`)) {
-            console.log('Eliminado.')
+        if (window.confirm(`¿Deseas eliminar "${name}" de productos?`))
             deleteProduct({ variables: { id } })
-        } else console.log('No se elimino.')
     }
 
     const create = e => {
@@ -165,6 +162,7 @@ const Productos = () => {
                     </div>
                     <div className="form-floating mb-3">
                         <select className="form-select" id="new-formulator" required>
+                            <option hidden value=''>Selecciona un formulador</option>
                             <option value="Symborg">Symborg</option>
                             <option value="Catawba">Catawba Enterprising</option>
                             <option value="ACP">Agrocorrectores del Pacífico</option>
@@ -175,6 +173,7 @@ const Productos = () => {
                     <div className="form-text">Para nuevas categorias se debe ir a la tab de Categorias.</div>
                     <div className="form-floating mb-3">
                         <select className="form-select" id="new-category" required>
+                            <option hidden value=''>Selecciona una categoría</option>
                             {categoryData && categoryData.getCategories.map(category => {
                                 return <option 
                                     value={category.name} 
@@ -184,7 +183,7 @@ const Productos = () => {
                                 </option>
                             })}
                         </select>
-                        <label>Categoria</label>
+                        <label>Categoría</label>
                     </div>
                     <div className="form-floating mb-3">
                         <input type="text" className="form-control" id="new-url" required />
@@ -229,7 +228,7 @@ const Productos = () => {
         <section className="row" id="row-correction">
             {data && data.getProducts.map((producto, i) => {
                 return <form 
-                    key={producto.name} 
+                    key={i} 
                     className="product-form col-sm-12 col-lg-4" 
                     onSubmit={e => saveProduct(e, producto.id, i, producto.image)}
                 >
@@ -239,6 +238,7 @@ const Productos = () => {
                     </div>
                     <div className="form-floating mb-3">
                         <select className="form-select" id={`formulator-${i}`} defaultValue={producto.formulator} required>
+                            <option hidden value=''>Selecciona un formulador</option>
                             <option value="Symborg">Symborg</option>
                             <option value="Catawba">Catawba Enterprising</option>
                             <option value="ACP">Agrocorrectores del Pacífico</option>
@@ -249,6 +249,7 @@ const Productos = () => {
                     <div className="form-text">Para nuevas categorias se debe ir a la tab de Categorias.</div>
                     <div className="form-floating mb-3">
                         <select className="form-select" id={`category-${i}`} defaultValue={producto.category} required>
+                            <option hidden value=''>Selecciona una categoría</option>
                             {categoryData && categoryData.getCategories.map(category => {
                                 return <option 
                                     value={category.name} 
@@ -258,7 +259,7 @@ const Productos = () => {
                                 </option>
                             })}
                         </select>
-                        <label>Categoria</label>
+                        <label>Categoría</label>
                     </div>
                     <div className="form-floating mb-3">
                         <input type="text" className="form-control" id={`url-${i}`} defaultValue={producto.url} required />
