@@ -245,31 +245,6 @@
 
 .home-31 button:hover {
     background-color: #173e3cda;
-    animation: jello-horizontal 0.9s both;
-}
-
-@keyframes jello-horizontal {
-    0% {
-        transform: scale3d(1, 1, 1);
-    }
-    30% {
-        transform: scale3d(1.1, 0.9, 1);
-    }
-    40% {
-        transform: scale3d(0.9, 1.1, 1);
-    }
-    50% {
-        transform: scale3d(1.10, 0.9, 1);
-    }
-    65% {
-        transform: scale3d(0.95, 1.05, 1);
-    }
-    75% {
-        transform: scale3d(1.05, 0.95, 1);
-    }
-    100% {
-        transform: scale3d(1, 1, 1);
-    }
 }
 
 .home-4 {
@@ -849,6 +824,16 @@
 
 .bi-trash:hover {
     color: #F44336;
+}
+
+.bi {
+    cursor: pointer;
+}
+
+.carousel-title {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
 }
 
 /* MODAL MODAL MODAL MODAL MODAL MODAL MODAL */

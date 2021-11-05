@@ -25,7 +25,7 @@ const GET_PRODUCTOS = gql`
 `
 
 const EDIT_PRODUCT = gql`
-    mutation ($id: String!, $name: String!, $formulator: String!, $category: String!, $image: String!, $url: String!) {
+    mutation ($id: String!, $name: String!, $formulator: String!, $category: String!, $image: String, $url: String!) {
         editProduct(id: $id, name: $name, formulator: $formulator, category: $category, image: $image, url: $url) {
             result
         }
@@ -64,7 +64,7 @@ const Productos = () => {
             } else alert('Error al editar el producto. Inténtalo de nuevo.')
         },
         onError: error => {
-            console.log(error.message)
+            console.log(error.networkError.result.errors[0].message)
             alert('Error al editar el producto. Inténtalo de nuevo.')
         }
     })
@@ -77,7 +77,7 @@ const Productos = () => {
             } else alert('Error al eliminar el producto. Inténtalo de nuevo.')
         },
         onError: error => {
-            console.log(error.message)
+            console.log(error.networkError.result.errors[0].message)
             alert('Error al eliminar el producto. Inténtalo de nuevo.')
         }
     })
@@ -90,12 +90,12 @@ const Productos = () => {
             } else alert('Error al crear el producto. Inténtalo de nuevo.')
         },
         onError: error => {
-            console.log(error.message)
+            console.log(error.networkError.result.errors[0].message)
             alert('Error al crear el producto. Inténtalo de nuevo.')
         }
     })
 
-    const saveProduct = (e, id, i, img) => {
+    const saveProduct = (e, id, i) => {
         e.preventDefault()
 
         const name = document.getElementById(`name-${i}`).value
@@ -112,9 +112,7 @@ const Productos = () => {
                     variables: { id, name, formulator, category, url, image: reader.result } 
                 })
             }
-        }
-
-        editProduct({ variables: { id, name, formulator, category, url, image: img } })
+        } else editProduct({ variables: { id, name, formulator, category, url } })
     }
 
     const removeProduct = (id, name) => {
@@ -196,10 +194,10 @@ const Productos = () => {
                 </div>
                 <div className="modal-footer">
                     <button className="btn-danger btn" type="button" onClick={closeModal}>
-                        Cancel
+                        Cancelar
                     </button>
                     <button className="btn-success btn" type="submit">
-                        Create
+                        Crear Producto
                     </button>
                 </div>
             </div>
@@ -221,17 +219,12 @@ const Productos = () => {
 
     return <>
         <CreateModal />
-        <button className="btn btn-primary mb-3 ms-3" onClick={openModal}>
-            <span>Agregar Producto</span>
-            <i className="bi bi-plus-circle ms-2" />
+        <button className="btn btn-primary mb-3" onClick={openModal} title="Agregar Producto">
+            <i className="bi bi-plus-circle" />
         </button>
-        <section className="row" id="row-correction">
+        <section className="row">
             {data && data.getProducts.map((producto, i) => {
-                return <form 
-                    key={i} 
-                    className="product-form col-sm-12 col-lg-4" 
-                    onSubmit={e => saveProduct(e, producto.id, i, producto.image)}
-                >
+                return <form key={i} className="product-form col-sm-12 col-lg-4" onSubmit={e => saveProduct(e, producto.id, i)}>
                     <div className="form-floating mb-3">
                         <input type="text" className="form-control" id={`name-${i}`} defaultValue={producto.name} required />
                         <label>Nombre</label>
@@ -269,12 +262,12 @@ const Productos = () => {
                     <div className="input-group mb-3">
                         <input type="file" className="form-control" id={`image-${i}`} />
                         <label className="input-group-text" onClick={() => window.open(producto.image, '_blank')}>
-                            Actual
+                            <i className="bi bi-image-fill" title="Ver Imagen Actual" />
                         </label>
                     </div>
-                    <button className="btn btn-success mb-5 me-2" type="submit">Guardar</button>
-                    <button className="btn btn-danger mb-5" type="button" onClick={e => removeProduct(producto.id, producto.name)}>
-                        <i className="bi bi-trash-fill" />
+                    <button className="btn btn-sm btn-success mb-5 me-2" type="submit">Guardar</button>
+                    <button className="btn btn-sm btn-danger mb-5" type="button" onClick={e => removeProduct(producto.id, producto.name)}>
+                        <i className="bi bi-trash-fill" title="Eliminar Producto" />
                     </button>
                 </form>
             })}

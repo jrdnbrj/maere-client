@@ -56,7 +56,7 @@ const Categorias = () => {
                 alert('Hubo un error al editar el nombre de la categoria. Inténtalo de nuevo.')
         },
         onError: error => {
-            console.log(error.message)
+            console.log(error.networkError.result.errors[0].message)
             alert('Hubo un error al editar el nombre de la categoria. Inténtalo de nuevo.')
         }
     })
@@ -71,7 +71,7 @@ const Categorias = () => {
                 alert('Hubo un error al crear la categoria. Inténtalo de nuevo.')
         },
         onError: error => {
-            console.log(error.message)
+            console.log(error.networkError.result.errors[0].message)
             alert('Hubo un error al crear la categoria. Inténtalo de nuevo.')
         }
     })
@@ -85,7 +85,7 @@ const Categorias = () => {
                 alert('Hubo un error al eliminar la categoria. Inténtalo de nuevo.')
         },
         onError: error => {
-            console.log(error.message)
+            console.log(error.networkError.result.errors[0].message)
             alert('Hubo un error al eliminar la categoria. Inténtalo de nuevo.')
         }
     })

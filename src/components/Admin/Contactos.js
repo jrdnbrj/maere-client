@@ -31,7 +31,7 @@ const Contactos = () => {
             else alert('Error al eliminar el contacto. Inténtalo de nuevo.')
         },
         onError: (error) => {
-            console.log(error.message)
+            console.log(error.networkError.result.errors[0].message)
             alert('Error al eliminar el contacto. Inténtalo de nuevo.')
         }
     })
