@@ -81,10 +81,8 @@ const Productos = () => {
 
     const [deleteProduct] = useMutation(DELETE_PRODUCT, {
         onCompleted: ({ deleteProduct }) => {
-            if (deleteProduct.result) {
-                alert('Producto eliminado con éxito.')
-                refetch()
-            } else alert('Error al eliminar el producto. Inténtalo de nuevo.')
+            if (deleteProduct.result) refetch()
+            else alert('Error al eliminar el producto. Inténtalo de nuevo.')
         },
         onError: ({ networkError: { result: { errors: err } } }) => {
             console.log(err[0].message)

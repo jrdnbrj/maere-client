@@ -46,11 +46,27 @@ const GET_HOME = gql`
     }
 `
 
+const EDIT_HOME = gql`
+    mutation ($title: String!, $text: String!) {
+        editHome(title: $title, text: $text) {
+            result
+        }
+    }
+`
+
 const GET_PRODUCT_HEADER = gql`
     query {
         getProductHeader {
             title
             text
+        }
+    }
+`
+
+const EDIT_PRODUCT_HEADER = gql`
+    mutation ($title: String!, $text: String!) {
+        editProductHeader(title: $title, text: $text) {
+            result
         }
     }
 `
@@ -66,6 +82,14 @@ const GET_US = gql`
     }
 `
 
+const EDIT_US = gql`
+    mutation ($id: ID!, $title: String!, $text: String!) {
+        editUs(id: $id, title: $title, text: $text) {
+            result
+        }
+    }
+`
+
 const GET_CONTACT_INFO = gql`
     query {
         getContactInfo {
@@ -73,6 +97,14 @@ const GET_CONTACT_INFO = gql`
             title
             text
             sequence
+        }
+    }
+`
+
+const EDIT_CONTACT_INFO = gql`
+    mutation ($id: ID!, $title: String!, $text: String!) {
+        editContactInfo(id: $id, title: $title, text: $text) {
+            result
         }
     }
 `
@@ -135,6 +167,66 @@ const Maere = () => {
         onError: ({ networkError: { result: { errors: err } } }) => {
             console.log(err[0].message)
             alert('Error al eliminar el item del Carrusel. Inténtalo de nuevo.')
+        }
+    })
+
+    const [editHome] = useMutation(EDIT_HOME, {
+        onCompleted: ({ editHome }) => {
+            if (editHome.result) alert('Home editado con éxito.')
+            else alert('Error al editar el Home. Inténtalo de nuevo.')
+        },
+        onError: ({ networkError: { result: { errors: err } } }) => {
+            console.log(err[0].message)
+            if (err[0].message.includes("'title':"))
+                alert('Ocurrió un error con el campo del Título. Inténtalo de nuevo.')
+            else if (err[0].message.includes("'text':"))
+                alert('Ocurrió un error con el campo del Texto. Inténtalo de nuevo.')
+            else alert('Error al editar el Home. Inténtalo de nuevo.')
+        }
+    })
+
+    const [editProductHeader] = useMutation(EDIT_PRODUCT_HEADER, {
+        onCompleted: ({ editProductHeader }) => {
+            if (editProductHeader.result) alert('Header de Productos editado con éxito.')
+            else alert('Error al editar el Header de Productos. Inténtalo de nuevo.')
+        },
+        onError: ({ networkError: { result: { errors: err } } }) => {
+            console.log(err[0].message)
+            if (err[0].message.includes("'title':"))
+                alert('Ocurrió un error con el campo del Título. Inténtalo de nuevo.')
+            else if (err[0].message.includes("'text':"))
+                alert('Ocurrió un error con el campo del Texto. Inténtalo de nuevo.')
+            else alert('Error al editar el Header de Productos. Inténtalo de nuevo.')
+        }
+    })
+
+    const [editUs] = useMutation(EDIT_US, {
+        onCompleted: ({ editUs }) => {
+            if (editUs.result) alert('Info de Nosotros editado con éxito.')
+            else alert('Error al editar info de Nosotros. Inténtalo de nuevo.')
+        },
+        onError: ({ networkError: { result: { errors: err } } }) => {
+            console.log(err[0].message)
+            if (err[0].message.includes("'title':"))
+                alert('Ocurrió un error con el campo del Título. Inténtalo de nuevo.')
+            else if (err[0].message.includes("'text':"))
+                alert('Ocurrió un error con el campo del Texto. Inténtalo de nuevo.')
+            else alert('Error al editar info de Nosotros. Inténtalo de nuevo.')
+        }
+    })
+
+    const [editContactInfo] = useMutation(EDIT_CONTACT_INFO, {
+        onCompleted: ({ editContactInfo }) => {
+            if (editContactInfo.result) alert('Info de Contacto editado con éxito.')
+            else alert('Error al editar info de Contacto. Inténtalo de nuevo.')
+        },
+        onError: ({ networkError: { result: { errors: err } } }) => {
+            console.log(err[0].message)
+            if (err[0].message.includes("'title':"))
+                alert('Ocurrió un error con el campo del Título. Inténtalo de nuevo.')
+            else if (err[0].message.includes("'text':"))
+                alert('Ocurrió un error con el campo del Texto. Inténtalo de nuevo.')
+            else alert('Error al editar info de Contacto. Inténtalo de nuevo.')
         }
     })
 
@@ -232,22 +324,38 @@ const Maere = () => {
 
     const saveHome = e => {
         e.preventDefault()
-        console.log('Guardando Home.')
+
+        const title = document.getElementById('home-title').value
+        const text = document.getElementById('home-text').value
+
+        editHome({ variables: { title, text } })
     }
 
     const saveProductHeader = e => {
         e.preventDefault()
-        console.log('Guardando Product Header.')
+
+        const title = document.getElementById('product-title').value
+        const text = document.getElementById('product-text').value
+
+        editProductHeader({ variables: { title, text } })
     }
 
     const saveUs = (e, id) => {
         e.preventDefault()
-        console.log('Guardando US.', id)
+
+        const title = document.getElementById('us-title').value
+        const text = document.getElementById('us-text').value
+
+        editUs({ variables: { id, title, text } })
     }
 
     const saveContactInfo = (e, id) => {
         e.preventDefault()
-        console.log('Guardando Contact Info.', id)
+
+        const title = document.getElementById('contact-title').value
+        const text = document.getElementById('contact-text').value
+
+        editContactInfo({ variables: { id, title, text } })
     }
 
     error && console.log(error)
@@ -319,11 +427,11 @@ const Maere = () => {
                     {dataHome && <>
                         <form onSubmit={saveHome}>
                             <div className="form-floating mb-3">
-                                <textarea className="form-control" defaultValue={dataHome.getHome.title} />
+                                <textarea className="form-control" id="home-title" defaultValue={dataHome.getHome.title} />
                                 <label>Título</label>
                             </div>
                             <div className="form-floating mb-3">
-                                <textarea className="form-control" defaultValue={dataHome.getHome.text} />
+                                <textarea className="form-control" id="home-text" defaultValue={dataHome.getHome.text} />
                                 <label>Texto</label>
                             </div>
                             <button className="btn btn-sm btn-success mb-5" type="submit">Guardar</button>
@@ -335,11 +443,11 @@ const Maere = () => {
                     {dataProduct && <>
                         <form onSubmit={saveProductHeader}>
                             <div className="form-floating mb-3">
-                                <textarea className="form-control" defaultValue={dataProduct.getProductHeader.title} />
+                                <textarea className="form-control" id="product-title" defaultValue={dataProduct.getProductHeader.title} />
                                 <label>Título</label>
                             </div>
                             <div className="form-floating mb-3">
-                                <textarea className="form-control" defaultValue={dataProduct.getProductHeader.text} />
+                                <textarea className="form-control" id="product-text" defaultValue={dataProduct.getProductHeader.text} />
                                 <label>Texto</label>
                             </div>
                             <button className="btn btn-sm btn-success mb-5" type="submit">Guardar</button>
@@ -354,11 +462,11 @@ const Maere = () => {
                 {dataUs && dataUs.getUs.map(item => {
                     return <form key={item.sequence} onSubmit={e => saveUs(e, item.id)}>
                         <div className="form-floating mb-3">
-                            <textarea className="form-control" defaultValue={item.title} />
+                            <textarea className="form-control" id="us-title" defaultValue={item.title} />
                             <label>Título</label>
                         </div>
                         <div className="form-floating mb-3">
-                            <textarea className="form-control" defaultValue={item.text} />
+                            <textarea className="form-control" id="us-text" defaultValue={item.text} />
                             <label>Texto</label>
                         </div>
                         <button className="btn btn-sm btn-success mb-5" type="submit">Guardar</button>
@@ -370,11 +478,11 @@ const Maere = () => {
                 {dataContact && dataContact.getContactInfo.map(item => {
                     return <form key={item.sequence} onSubmit={e => saveContactInfo(e, item.id)}>
                         <div className="form-floating mb-3">
-                            <textarea className="form-control" defaultValue={item.title} />
+                            <textarea className="form-control" id="contact-title" defaultValue={item.title} />
                             <label>Título</label>
                         </div>
                         <div className="form-floating mb-3">
-                            <textarea className="form-control" defaultValue={item.text} />
+                            <textarea className="form-control" id="contact-text" defaultValue={item.text} />
                             <label>Texto</label>
                         </div>
                         <button className="btn btn-sm btn-success mb-5" type="submit">Guardar</button>
