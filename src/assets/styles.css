@@ -786,6 +786,10 @@
     border: 0;
 }
 
+.remove-contact .bi-trash {
+    font-size: 1.4rem;
+}
+
 .maere-carousel textarea, .maere-home textarea,
 .maere-prod textarea, .maere-us textarea,
 .maere-contact textarea {

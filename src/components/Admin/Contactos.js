@@ -1,5 +1,4 @@
-import { useEffect, useState } from 'react'
-import { useQuery, gql } from "@apollo/client"
+import { useQuery, useMutation, gql } from "@apollo/client"
 
 
 const GET_CONTACTS = gql`
@@ -14,19 +13,36 @@ const GET_CONTACTS = gql`
     }
 `
 
+const DELETE_CONTACT = gql`
+    mutation ($id: String!) {
+        deleteContact(id: $id) {
+            result
+        }
+    }
+`
+
 const Contactos = () => {
 
+    const { data, loading, refetch } = useQuery(GET_CONTACTS)
 
-    const [contacts, setContacts] = useState()
+    const [deleteContact] = useMutation(DELETE_CONTACT, {
+        onCompleted: ({ deleteContact }) => {
+            if (deleteContact.result) refetch()
+            else alert('Error al eliminar el contacto. Inténtalo de nuevo.')
+        },
+        onError: (error) => {
+            console.log(error.message)
+            alert('Error al eliminar el contacto. Inténtalo de nuevo.')
+        }
+    })
 
-    const { data: contactsData, loading: contactsLoading } = useQuery(GET_CONTACTS)
-
-    useEffect(() => {
-        setContacts(contactsData)
-    }, [contactsData])
+    const removeContact = (id, name) => {
+        if (window.confirm(`¿Estas seguro que deseas eliminar la información de contacto de "${name}"?`))
+            deleteContact({ variables: { id } })
+    }
 
     return <>
-        {contactsLoading ? <span>Cargando Contactos...</span> : <>
+        {loading ? <span>Cargando Contactos...</span> : <>
             <table className="table table-striped table-hover my-5">
                 <thead>
                     <tr>
@@ -39,7 +55,7 @@ const Contactos = () => {
                     </tr>
                 </thead>
                 <tbody>
-                    {contacts && contacts.getContacts.map((contact, index) => {
+                    {data && data.getContacts.map((contact, index) => {
                         return <tr key={index}>
                             <th scope="row">{index + 1}</th>
                             <td>{contact.name}</td>
@@ -47,8 +63,11 @@ const Contactos = () => {
                             <td>{contact.email}</td>
                             <td>{contact.message}</td>
                             <td>
-                                <button className="remove-contact" onClick={() => console.log('Elimar Contacto')}>
-                                    <i className="bi-x-lg" />
+                                <button 
+                                    className="remove-contact" 
+                                    onClick={() => removeContact(contact.id, contact.name)}
+                                >
+                                    <i className="bi bi-trash" />
                                 </button>
                             </td>
                         </tr>

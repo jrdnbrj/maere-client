@@ -55,8 +55,8 @@ const Categorias = () => {
             } else 
                 alert('Hubo un error al editar el nombre de la categoria. Inténtalo de nuevo.')
         },
-        onError: (error) => {
-            console.log(error)
+        onError: error => {
+            console.log(error.message)
             alert('Hubo un error al editar el nombre de la categoria. Inténtalo de nuevo.')
         }
     })
@@ -70,8 +70,8 @@ const Categorias = () => {
             } else 
                 alert('Hubo un error al crear la categoria. Inténtalo de nuevo.')
         },
-        onError: (error) => {
-            console.log(error)
+        onError: error => {
+            console.log(error.message)
             alert('Hubo un error al crear la categoria. Inténtalo de nuevo.')
         }
     })
@@ -84,8 +84,8 @@ const Categorias = () => {
             } else 
                 alert('Hubo un error al eliminar la categoria. Inténtalo de nuevo.')
         },
-        onError: (error) => {
-            console.log(error)
+        onError: error => {
+            console.log(error.message)
             alert('Hubo un error al eliminar la categoria. Inténtalo de nuevo.')
         }
     })

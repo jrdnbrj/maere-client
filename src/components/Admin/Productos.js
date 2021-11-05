@@ -64,8 +64,8 @@ const Productos = () => {
             } else alert('Error al editar el producto. Inténtalo de nuevo.')
         },
         onError: error => {
+            console.log(error.message)
             alert('Error al editar el producto. Inténtalo de nuevo.')
-            console.log(error)
         }
     })
 
@@ -77,8 +77,8 @@ const Productos = () => {
             } else alert('Error al eliminar el producto. Inténtalo de nuevo.')
         },
         onError: error => {
+            console.log(error.message)
             alert('Error al eliminar el producto. Inténtalo de nuevo.')
-            console.log(error)
         }
     })
 
@@ -90,8 +90,8 @@ const Productos = () => {
             } else alert('Error al crear el producto. Inténtalo de nuevo.')
         },
         onError: error => {
+            console.log(error.message)
             alert('Error al crear el producto. Inténtalo de nuevo.')
-            console.log(error)
         }
     })
 
