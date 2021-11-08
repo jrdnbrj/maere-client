@@ -9,8 +9,6 @@ import catawba from '../assets/img/catawba.svg'
 import acp from '../assets/img/acp.svg'
 import fcnecsa from '../assets/img/fcnecsa.svg'
 
-import prod from '../assets/img/prod.png'
-
 
 const GET_PRODUCT_HEADER = gql`
     query {
@@ -106,12 +104,12 @@ const Productos = () => {
                         <section className="row product-list" id="row-correction">
                             { productsFilter.map(product => {
                                 if (product.category === category.name) {
-                                    return <section className="col-lg-3 col-12 col-sm-6" data-aos="fade-up" key={product.name}>
-                                        {/* <img src={product.image} alt={product.name} /> */}
-                                        <img src={prod} alt={product.name} />
-                                        <a href={product.url} target="_blank" rel="noreferrer">
-                                            <span>{product.name}</span>
-                                        </a>
+                                    return <section 
+                                        className="col-lg-3 col-12 col-sm-6 link" data-aos="fade-up" 
+                                        key={product.name} onClick={() => window.open(product.url, '_blank')}
+                                    >
+                                        <img src={product.image} alt={product.name} />
+                                        <span>{product.name}</span>
                                     </section>
                                 }
                                 return null

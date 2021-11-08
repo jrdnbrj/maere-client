@@ -728,8 +728,8 @@
     align-self: center;
 }
 
-.product-list a {
-    font-family: Poppins Light;
+.product-list span {
+    font-family: Poppins Medium;
     font-size: 1.1rem;
     margin-top: 5%;
     align-self: center;
@@ -748,6 +748,10 @@
     font-family: Poppins Light;
     color: #173E3C;
     margin-left: 5%;
+}
+
+.link {
+    cursor: pointer;
 }
 
 /* ADMIN ADMIN ADMIN ADMIN */
