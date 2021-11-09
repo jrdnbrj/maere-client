@@ -24,6 +24,7 @@ const GET_CATEGORIES = gql`
         getCategories {
             name
             sequence
+            products
         }
     }
 `
@@ -93,19 +94,33 @@ const Productos = () => {
         { data &&
             <section className="products">
                 <section className="row">
-                    <img src={symborg} className="product-brand col" alt="Symborg" onClick={() => onChangeBrand('Symborg')} />
-                    <img src={catawba} className="product-brand col" alt="Catawba" onClick={() => onChangeBrand('Catawba')} />
-                    <img src={acp} className="product-brand col" alt="acp" onClick={() => onChangeBrand('ACP')} />
-                    <img src={fcnecsa} className="product-brand col" alt="fenecsa" onClick={() => onChangeBrand('Fenecsa')} />
+                    <img 
+                        className={`product-brand col ${brand === 'Symborg' ? 'focus-brand' : 'blur-brand'}`} 
+                        src={symborg} onClick={() => onChangeBrand('Symborg')} alt="Symborg"
+                    />
+                    <img 
+                        className={`product-brand col ${brand === 'Catawba' ? 'focus-brand' : 'blur-brand'}`} 
+                        onClick={() => onChangeBrand('Catawba')} src={catawba} alt="Catawba" 
+                    />
+                    <img 
+                        className={`product-brand col ${brand === 'ACP' ? 'focus-brand' : 'blur-brand'}`} 
+                        onClick={() => onChangeBrand('ACP')} src={acp} alt="acp" 
+                    />
+                    <img 
+                        className={`product-brand col ${brand === 'Fenecsa' ? 'focus-brand' : 'blur-brand'}`} 
+                        onClick={() => onChangeBrand('Fenecsa')} src={fcnecsa} alt="fenecsa" 
+                    />
                 </section>
                 {categoryData && categoryData.getCategories.map(category => {
                     return <section className={category.name.split(' ')[0]} key={category.sequence}>
-                        <h2 id={category.name.split(' ')[0]}>{category.name.toUpperCase()}</h2>
+                        {category.products > 0 &&
+                            <h2 id={category.name.split(' ')[0]}>{category.name.toUpperCase()}</h2>
+                        }
                         <section className="row product-list" id="row-correction">
                             { productsFilter.map(product => {
                                 if (product.category === category.name) {
                                     return <section 
-                                        className="col-lg-3 col-12 col-sm-6 link" data-aos="fade-up" 
+                                        className="col-lg-3 col-12 col-sm-6 link" data-aos="fade-up" title="Ver Producto"
                                         key={product.name} onClick={() => window.open(product.url, '_blank')}
                                     >
                                         <img src={product.image} alt={product.name} />

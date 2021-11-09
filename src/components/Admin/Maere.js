@@ -251,7 +251,7 @@ const Maere = () => {
             <div className="modal-content">
                 <div className="modal-header row" id="row-correction">
                     <div className="col-10">
-                        <strong>Crear Producto</strong>
+                        <strong>Crear Item del Carrusel</strong>
                     </div>
                     <div className="col-2">
                         <span className="modal-close" onClick={closeModal}>
@@ -279,10 +279,10 @@ const Maere = () => {
                 </div>
                 <div className="modal-footer">
                     <button className="btn-danger btn" type="button" onClick={closeModal}>
-                        Cancel
+                        Cancelar
                     </button>
                     <button className="btn-success btn" type="submit">
-                        Create
+                        Crear Item
                     </button>
                 </div>
             </div>

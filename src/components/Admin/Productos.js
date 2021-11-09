@@ -205,7 +205,6 @@ const Productos = () => {
                         <input type="text" className="form-control" id="new-url" required />
                         <label>URL</label>
                     </div>
-                    <div className="form-text">La imagen debe tener una dimensión de 500x650.</div>
                     <div className="input-group mb-3">
                         <input type="file" className="form-control" id="new-image" required />
                     </div>
@@ -276,7 +275,6 @@ const Productos = () => {
                         <input type="text" className="form-control" id={`url-${i}`} defaultValue={producto.url} required />
                         <label>URL</label>
                     </div>
-                    <div className="form-text">La imagen debe tener una dimensión de 500x650.</div>
                     <div className="input-group mb-3">
                         <input type="file" className="form-control" id={`image-${i}`} />
                         <label 

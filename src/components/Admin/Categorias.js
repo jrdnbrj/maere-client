@@ -8,6 +8,7 @@ const GET_CATEGORIES = gql`
             id
             name
             sequence
+            products
         }
     }
 `
@@ -125,7 +126,12 @@ const Categorias = () => {
                         />
                         <i className="bi bi-check-circle" title="Guardar" onClick={() => saveCategory(category.id)} />
                     </> : <>
-                        <span>{category.name}</span>
+                        <div>
+                            <span>{category.name}</span>
+                            <span className="badge rounded-pill bg-secondary ms-2" title="# de Productos con esta categoría">
+                                {category.products}
+                            </span>
+                        </div>
                         <i className="bi bi-trash" title="Eliminar" onClick={() => removeCategory(category.id, category.name)} />
                     </>}
                 </li>
