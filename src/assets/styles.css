@@ -478,6 +478,7 @@
     margin-top: 5%;
     animation: slide-in-left-2 0.9s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
     filter: drop-shadow( 1px 1px 2px rgba(0, 0, 0, 0.7));
+    white-space: pre-wrap;
 }
 
 @keyframes slide-in-left-2 {
@@ -535,6 +536,39 @@
     }
     .contact-social img {
         width: 70%;
+    }
+}
+
+.home-6 {
+    background-color: #173E3C;
+    color: #FFF;
+    padding: 7% 0;
+}
+
+.home-6 h2 {
+    font-size: 1.3rem;
+    font-family: Poppins Bold;
+    text-align: center;
+    margin: 0 10%;
+}
+
+.home-6 section {
+    text-align: center;
+}
+
+.home-6 section img {
+    height: 2.8rem;
+    margin-top: 1.5rem;
+    object-fit: contain;
+}
+
+.home-6 section img:hover {
+    animation: scale-up-center 0.4s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+}
+
+@media (max-width: 900px) {
+    .home-6 {
+        padding: 7% 0 30% 0;
     }
 }
 
@@ -863,6 +897,16 @@
     display: flex;
     align-items: baseline;
     justify-content: space-between;
+}
+
+.mobile-hidden {
+    display: none;
+}
+
+@media (max-width: 991px) {
+    .mobile-hidden {
+        display: block;
+    }
 }
 
 /* MODAL MODAL MODAL MODAL MODAL MODAL MODAL */

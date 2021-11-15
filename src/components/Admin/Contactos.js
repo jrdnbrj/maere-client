@@ -28,21 +28,21 @@ const Contactos = () => {
     const [deleteContact] = useMutation(DELETE_CONTACT, {
         onCompleted: ({ deleteContact }) => {
             if (deleteContact.result) refetch()
-            else alert('Error al eliminar el contacto. Inténtalo de nuevo.')
+            else alert('❌ Error al eliminar al eliminar la información de contacto. Inténtalo de nuevo.')
         },
         onError: (error) => {
             console.log(error.networkError.result.errors[0].message)
-            alert('Error al eliminar el contacto. Inténtalo de nuevo.')
+            alert('❌ Error al eliminar la información de contacto. Inténtalo de nuevo.')
         }
     })
 
     const removeContact = (id, name) => {
-        if (window.confirm(`¿Estas seguro que deseas eliminar la información de contacto de "${name}"?`))
+        if (window.confirm(`¿Estás seguro que deseas eliminar la información de contacto de "${name}"?`))
             deleteContact({ variables: { id } })
     }
 
     return <>
-        {loading ? <span>Cargando Contactos...</span> : <>
+        {loading ? <span>Cargando Contactos...</span> : <div className="table-responsive">
             <table className="table table-striped table-hover my-5">
                 <thead>
                     <tr>
@@ -75,7 +75,7 @@ const Contactos = () => {
                     })}
                 </tbody>
             </table>
-        </>}
+        </div>}
     </>
 }
 

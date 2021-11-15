@@ -120,113 +120,113 @@ const Maere = () => {
     const [createCarousel] = useMutation(CREATE_CAROUSEL_ITEM, {
         onCompleted: ({ createCarousel }) => {
             if (createCarousel.result) {
-                alert('Item del Carrusel creado con éxito.')
+                alert('✔️ Se creó un nuevo item del carrusel.')
                 refetch()
-            } else alert('Error al crear un item del Carrusel. Inténtalo de nuevo.')
+            } else alert('❌ Error al crear un item del Carrusel. Inténtalo de nuevo.')
         },
         onError: ({ networkError: { result: { errors: err } } }) => {
             console.log(err[0].message)
             if (err[0].message.includes("'sequence':"))
-                alert('El número de la secuencia ya existe.')
+                alert('⚠️ El número de la secuencia ya existe.')
             else if (err[0].message.includes("'title':"))
-                alert('Ocurrió un error con el campo del Título. Inténtalo de nuevo.')
+                alert('❌ Ocurrió un error con el campo del Título. Inténtalo de nuevo.')
             else if (err[0].message.includes("'text':"))
-                alert('Ocurrió un error con el campo del Texto. Inténtalo de nuevo.')
+                alert('❌ Ocurrió un error con el campo del Texto. Inténtalo de nuevo.')
             else if (err[0].message.includes("'image':"))
-                alert('Ocurrió un error con el campo de la Imagen. Inténtalo de nuevo.')
-            else alert('Error al editar el item del Carrusel. Inténtalo de nuevo.')
+                alert('❌ Ocurrió un error con el campo de la Imagen. Inténtalo de nuevo.')
+            else alert('❌ Error al editar el item del Carrusel. Inténtalo de nuevo.')
         }
     })
 
     const [editCarousel] = useMutation(EDIT_CAROUSEL_ITEM, {
         onCompleted: ({ editCarousel }) => {
             if (editCarousel.result) {
-                alert('Item del Carrusel editado con éxito.')
+                alert('✔️ Se editó el item del carrusel.')
                 refetch()
-            } else alert('Error al editar el item del Carrusel. Inténtalo de nuevo.')
+            } else alert('❌ Error al editar el item del Carrusel. Inténtalo de nuevo.')
         },
         onError: ({ networkError: { result: { errors: err } } }) => {
             console.log(err[0].message)
             if (err[0].message.includes("'sequence':"))
-                alert('El número de la secuencia ya existe.')
+                alert('⚠️ El número de la secuencia ya existe.')
             else if (err[0].message.includes("'title':"))
-                alert('Ocurrió un error con el campo del Título. Inténtalo de nuevo.')
+                alert('❌ Ocurrió un error con el campo del Título. Inténtalo de nuevo.')
             else if (err[0].message.includes("'text':"))
-                alert('Ocurrió un error con el campo del Texto. Inténtalo de nuevo.')
+                alert('❌ Ocurrió un error con el campo del Texto. Inténtalo de nuevo.')
             else if (err[0].message.includes("'image':"))
-                alert('Ocurrió un error con el campo de la Imagen. Inténtalo de nuevo.')
-            else alert('Error al editar el item del Carrusel. Inténtalo de nuevo.')
+                alert('❌ Ocurrió un error con el campo de la Imagen. Inténtalo de nuevo.')
+            else alert('❌ Error al editar el item del Carrusel. Inténtalo de nuevo.')
         }
     })
 
     const [deleteCarousel] = useMutation(DELETE_CAROUSEL_ITEM, {
         onCompleted: ({ deleteCarousel }) => {
             if (deleteCarousel.result) refetch()
-            else alert('Error al eliminar el item del Carrusel. Inténtalo de nuevo.')
+            else alert('❌ Error al eliminar el item del Carrusel. Inténtalo de nuevo.')
         },
         onError: ({ networkError: { result: { errors: err } } }) => {
             console.log(err[0].message)
-            alert('Error al eliminar el item del Carrusel. Inténtalo de nuevo.')
+            alert('❌ Error al eliminar el item del Carrusel. Inténtalo de nuevo.')
         }
     })
 
     const [editHome] = useMutation(EDIT_HOME, {
         onCompleted: ({ editHome }) => {
-            if (editHome.result) alert('Home editado con éxito.')
-            else alert('Error al editar el Home. Inténtalo de nuevo.')
+            if (editHome.result) alert('✔️ Se editó la información del Home.')
+            else alert('❌ Error al editar la información del Home. Inténtalo de nuevo.')
         },
         onError: ({ networkError: { result: { errors: err } } }) => {
             console.log(err[0].message)
             if (err[0].message.includes("'title':"))
-                alert('Ocurrió un error con el campo del Título. Inténtalo de nuevo.')
+                alert('❌ Ocurrió un error con el campo del Título. Inténtalo de nuevo.')
             else if (err[0].message.includes("'text':"))
-                alert('Ocurrió un error con el campo del Texto. Inténtalo de nuevo.')
-            else alert('Error al editar el Home. Inténtalo de nuevo.')
+                alert('❌ Ocurrió un error con el campo del Texto. Inténtalo de nuevo.')
+            else alert('❌ Error al editar la información del Home. Inténtalo de nuevo.')
         }
     })
 
     const [editProductHeader] = useMutation(EDIT_PRODUCT_HEADER, {
         onCompleted: ({ editProductHeader }) => {
-            if (editProductHeader.result) alert('Header de Productos editado con éxito.')
-            else alert('Error al editar el Header de Productos. Inténtalo de nuevo.')
+            if (editProductHeader.result) alert('✔️ Se editó la información del Header de Productos.')
+            else alert('❌ Error al editar el Header de Productos. Inténtalo de nuevo.')
         },
         onError: ({ networkError: { result: { errors: err } } }) => {
             console.log(err[0].message)
             if (err[0].message.includes("'title':"))
-                alert('Ocurrió un error con el campo del Título. Inténtalo de nuevo.')
+                alert('❌ Ocurrió un error con el campo del Título. Inténtalo de nuevo.')
             else if (err[0].message.includes("'text':"))
-                alert('Ocurrió un error con el campo del Texto. Inténtalo de nuevo.')
-            else alert('Error al editar el Header de Productos. Inténtalo de nuevo.')
+                alert('❌ Ocurrió un error con el campo del Texto. Inténtalo de nuevo.')
+            else alert('❌ Error al editar el Header de Productos. Inténtalo de nuevo.')
         }
     })
 
     const [editUs] = useMutation(EDIT_US, {
         onCompleted: ({ editUs }) => {
-            if (editUs.result) alert('Info de Nosotros editado con éxito.')
-            else alert('Error al editar info de Nosotros. Inténtalo de nuevo.')
+            if (editUs.result) alert('✔️ Se editó la información de Nosotros.')
+            else alert('❌ Error al editar info de Nosotros. Inténtalo de nuevo.')
         },
         onError: ({ networkError: { result: { errors: err } } }) => {
             console.log(err[0].message)
             if (err[0].message.includes("'title':"))
-                alert('Ocurrió un error con el campo del Título. Inténtalo de nuevo.')
+                alert('❌ Ocurrió un error con el campo del Título. Inténtalo de nuevo.')
             else if (err[0].message.includes("'text':"))
-                alert('Ocurrió un error con el campo del Texto. Inténtalo de nuevo.')
-            else alert('Error al editar info de Nosotros. Inténtalo de nuevo.')
+                alert('❌ Ocurrió un error con el campo del Texto. Inténtalo de nuevo.')
+            else alert('❌ Error al editar info de Nosotros. Inténtalo de nuevo.')
         }
     })
 
     const [editContactInfo] = useMutation(EDIT_CONTACT_INFO, {
         onCompleted: ({ editContactInfo }) => {
-            if (editContactInfo.result) alert('Info de Contacto editado con éxito.')
-            else alert('Error al editar info de Contacto. Inténtalo de nuevo.')
+            if (editContactInfo.result) alert('✔️ Se editó la información de Contacto.')
+            else alert('❌ Error al editar info de Contacto. Inténtalo de nuevo.')
         },
         onError: ({ networkError: { result: { errors: err } } }) => {
             console.log(err[0].message)
             if (err[0].message.includes("'title':"))
-                alert('Ocurrió un error con el campo del Título. Inténtalo de nuevo.')
+                alert('❌ Ocurrió un error con el campo del Título. Inténtalo de nuevo.')
             else if (err[0].message.includes("'text':"))
-                alert('Ocurrió un error con el campo del Texto. Inténtalo de nuevo.')
-            else alert('Error al editar info de Contacto. Inténtalo de nuevo.')
+                alert('❌ Ocurrió un error con el campo del Texto. Inténtalo de nuevo.')
+            else alert('❌ Error al editar info de Contacto. Inténtalo de nuevo.')
         }
     })
 
@@ -386,20 +386,20 @@ const Maere = () => {
                         key={item.sequence} 
                         onSubmit={e => saveCarousel(e, item.id, i)}
                     >
-                        <div className="form-floating mb-3">
+                        <div className="form-floating mb-2">
                             <textarea className="form-control" id={`title-${i}`} defaultValue={item.title} />
                             <label>Título</label>
                         </div>
-                        <div className="form-floating mb-3">
+                        <div className="form-floating mb-2">
                             <textarea className="form-control" id={`text-${i}`} defaultValue={item.text} />
                             <label>Texto</label>
                         </div>
-                        <div className="form-floating mb-3">
+                        <div className="form-floating mb-2">
                             <input type="number" className="form-control" id={`sequence-${i}`} defaultValue={item.sequence} />
                             <label>Secuencia</label>
                         </div>
                         <div className="form-text">La imagen debe tener una dimensión de 2x1.</div>
-                        <div className="input-group mb-3">
+                        <div className="input-group mb-1">
                             <input type="file" id={`img-${i}`} className="form-control" />
                             <label 
                                 className="input-group-text" title="Ver Imagen Actual" 
@@ -408,9 +408,9 @@ const Maere = () => {
                                 <i className="bi bi-image-fill" />
                             </label>
                         </div>
-                        <button className="btn btn-sm btn-success mb-5 me-2" type="submit">Guardar</button>
+                        <button className="btn btn-sm btn-success mb-3 me-2" type="submit">Guardar</button>
                         <button 
-                            className="btn btn-sm btn-danger mb-5" type="button" 
+                            className="btn btn-sm btn-danger mb-3" type="button" 
                             title="Eliminar Item del Carrusel"
                             onClick={() => removeCarousel(item.id, item.title, item.text)}
                         >
@@ -426,37 +426,38 @@ const Maere = () => {
                 <h1 className="display-6">Home</h1>
                     {dataHome && <>
                         <form onSubmit={saveHome}>
-                            <div className="form-floating mb-3">
+                            <div className="form-floating mb-2">
                                 <textarea className="form-control" id="home-title" defaultValue={dataHome.getHome.title} />
                                 <label>Título</label>
                             </div>
-                            <div className="form-floating mb-3">
+                            <div className="form-floating mb-1">
                                 <textarea className="form-control" id="home-text" defaultValue={dataHome.getHome.text} />
                                 <label>Texto</label>
                             </div>
-                            <button className="btn btn-sm btn-success mb-5" type="submit">Guardar</button>
+                            <button className="btn btn-sm btn-success mb-2" type="submit">Guardar</button>
                         </form>
                     </>}
             </section>
+            <hr className="dropdown-divider mobile-hidden" />
             <section className="maere-prod col-sm-12 col-lg-6">
                 <h1 className="display-6">Productos</h1>
                     {dataProduct && <>
                         <form onSubmit={saveProductHeader}>
-                            <div className="form-floating mb-3">
+                            <div className="form-floating mb-2">
                                 <textarea 
                                     className="form-control" id="product-title" 
                                     defaultValue={dataProduct.getProductHeader.title} 
                                 />
                                 <label>Título</label>
                             </div>
-                            <div className="form-floating mb-3">
+                            <div className="form-floating mb-1">
                                 <textarea 
                                     className="form-control" id="product-text" 
                                     defaultValue={dataProduct.getProductHeader.text} 
                                 />
                                 <label>Texto</label>
                             </div>
-                            <button className="btn btn-sm btn-success mb-5" type="submit">Guardar</button>
+                            <button className="btn btn-sm btn-success mb-2" type="submit">Guardar</button>
                         </form>
                     </>}
             </section>
@@ -467,31 +468,32 @@ const Maere = () => {
                 <h1 className="display-6">Nosotros</h1>
                 {dataUs && dataUs.getUs.map((item, i) => {
                     return <form key={item.sequence} onSubmit={e => saveUs(e, item.id, i)}>
-                        <div className="form-floating mb-3">
+                        <div className="form-floating mb-2">
                             <textarea className="form-control" id={`us-title-${i}`} defaultValue={item.title} />
                             <label>Título</label>
                         </div>
-                        <div className="form-floating mb-3">
+                        <div className="form-floating mb-1">
                             <textarea className="form-control" id={`us-text-${i}`} defaultValue={item.text} />
                             <label>Texto</label>
                         </div>
-                        <button className="btn btn-sm btn-success mb-5" type="submit">Guardar</button>
+                        <button className="btn btn-sm btn-success mb-3" type="submit">Guardar</button>
                     </form>
                 })}
             </section>
+            <hr className="dropdown-divider mobile-hidden" />
             <section className="maere-contact col-sm-12 col-lg-6">
                 <h1 className="display-6">Información de Contacto</h1>
                 {dataContact && dataContact.getContactInfo.map((item, i) => {
                     return <form key={item.sequence} onSubmit={e => saveContactInfo(e, item.id, i)}>
-                        <div className="form-floating mb-3">
+                        <div className="form-floating mb-2">
                             <textarea className="form-control" id={`contact-title-${i}`} defaultValue={item.title} />
                             <label>Título</label>
                         </div>
-                        <div className="form-floating mb-3">
+                        <div className="form-floating mb-1">
                             <textarea className="form-control" id={`contact-text-${i}`} defaultValue={item.text} />
                             <label>Texto</label>
                         </div>
-                        <button className="btn btn-sm btn-success mb-5" type="submit">Guardar</button>
+                        <button className="btn btn-sm btn-success mb-3" type="submit">Guardar</button>
                     </form>
                 })}
             </section>

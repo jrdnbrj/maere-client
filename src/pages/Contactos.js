@@ -49,7 +49,7 @@ const Contactos = () => {
                 <ContactForm />
             </section>
         </section>
-        <section className="home-4">
+        <section className="home-6">
             <h2 data-aos="fade-down">Representamos a los productos más innovadores del mercado</h2>
             <section className="row" id="row-correction">
                 <div className="col-sm-2 col-lg-4" />

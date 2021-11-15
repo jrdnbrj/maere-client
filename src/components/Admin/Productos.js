@@ -59,57 +59,57 @@ const Productos = () => {
     const [editProduct] = useMutation(EDIT_PRODUCT, {
         onCompleted: ({ editProduct }) => {
             if (editProduct.result) {
-                alert('Producto editado con éxito.')
                 refetch()
-            } else alert('Error al editar el producto. Inténtalo de nuevo.')
+                alert('✔️ Producto editado con éxito.')
+            } else alert('❌ Hubo un error editando la información del producto. Inténtalo de nuevo.')
         },
         onError: ({ networkError: { result: { errors: err } } }) => {
             console.log(err[0].message)
             if (err[0].message.includes("'name':"))
-                alert('Ocurrió un error con el campo del Nombre. Inténtalo de nuevo.')
+                alert('❌ Ocurrió un error con el campo del Nombre. Inténtalo de nuevo.')
             else if (err[0].message.includes("'formulator':"))
-                alert('Ocurrió un error con el campo del Formulador. Inténtalo de nuevo.')
+                alert('❌ Ocurrió un error con el campo del Formulador. Inténtalo de nuevo.')
             else if (err[0].message.includes("'category':"))
-                alert('Ocurrió un error con el campo de la Categoría. Inténtalo de nuevo.')
+                alert('❌ Ocurrió un error con el campo de la Categoría. Inténtalo de nuevo.')
             else if (err[0].message.includes("'image':"))
-                alert('Ocurrió un error con el campo de la Imagen. Inténtalo de nuevo.')
+                alert('❌ Ocurrió un error con el campo de la Imagen. Inténtalo de nuevo.')
             else if (err[0].message.includes("'url':"))
-                alert('Ocurrió un error con el campo de la URL. Inténtalo de nuevo.')
-            else alert('Error al editar el producto. Inténtalo de nuevo.')
+                alert('❌ Ocurrió un error con el campo de la URL. Inténtalo de nuevo.')
+            else alert('❌ Hubo un error editando la información del producto. Inténtalo de nuevo.')
         }
     })
 
     const [deleteProduct] = useMutation(DELETE_PRODUCT, {
         onCompleted: ({ deleteProduct }) => {
             if (deleteProduct.result) refetch()
-            else alert('Error al eliminar el producto. Inténtalo de nuevo.')
+            else alert('❌ Hubo un error eliminando el producto. Inténtalo de nuevo.')
         },
         onError: ({ networkError: { result: { errors: err } } }) => {
             console.log(err[0].message)
-            alert('Error al eliminar el producto. Inténtalo de nuevo.')
+            alert('❌ Hubo un error eliminando el producto. Inténtalo de nuevo.')
         }
     })
 
     const [createProduct] = useMutation(CREATE_PRODUCT, {
         onCompleted: ({ createProduct }) => {
             if (createProduct.result) {
-                alert('Producto creado con éxito.')
                 refetch()
-            } else alert('Error al crear el producto. Inténtalo de nuevo.')
+                alert('✔️ Se creó un nuevo producto.')
+            } else alert('❌ Hubo un error creando el producto. Inténtalo de nuevo.')
         },
         onError: ({ networkError: { result: { errors: err } } }) => {
             console.log(err[0].message)
             if (err[0].message.includes("'name':"))
-                alert('Ocurrió un error con el campo del Nombre. Inténtalo de nuevo.')
+                alert('❌ Ocurrió un error con el campo del Nombre. Inténtalo de nuevo.')
             else if (err[0].message.includes("'formulator':"))
-                alert('Ocurrió un error con el campo del Formulador. Inténtalo de nuevo.')
+                alert('❌ Ocurrió un error con el campo del Formulador. Inténtalo de nuevo.')
             else if (err[0].message.includes("'category':"))
-                alert('Ocurrió un error con el campo de la Categoría. Inténtalo de nuevo.')
+                alert('❌ Ocurrió un error con el campo de la Categoría. Inténtalo de nuevo.')
             else if (err[0].message.includes("'image':"))
-                alert('Ocurrió un error con el campo de la Imagen. Inténtalo de nuevo.')
+                alert('❌ Ocurrió un error con el campo de la Imagen. Inténtalo de nuevo.')
             else if (err[0].message.includes("'url':"))
-                alert('Ocurrió un error con el campo de la URL. Inténtalo de nuevo.')
-            else alert('Error al crear el producto. Inténtalo de nuevo.')
+                alert('❌ Ocurrió un error con el campo de la URL. Inténtalo de nuevo.')
+            else alert('❌ Hubo un error creando el producto. Inténtalo de nuevo.')
         }
     })
 
@@ -181,7 +181,7 @@ const Productos = () => {
                             <option hidden value=''>Selecciona un formulador</option>
                             <option value="Symborg">Symborg</option>
                             <option value="Catawba">Catawba Enterprising</option>
-                            <option value="ACP">Agrocorrectores del Pacífico</option>
+                            <option value="ACP">Agro Correctores del Pacífico</option>
                             <option value="Fenecsa">Fenecsa</option>
                         </select>
                         <label>Formulador</label>
@@ -251,7 +251,7 @@ const Productos = () => {
                             <option hidden value=''>Selecciona un formulador</option>
                             <option value="Symborg">Symborg</option>
                             <option value="Catawba">Catawba Enterprising</option>
-                            <option value="ACP">Agrocorrectores del Pacífico</option>
+                            <option value="ACP">Agro Correctores del Pacífico</option>
                             <option value="Fenecsa">Fenecsa</option>
                         </select>
                         <label>Formulador</label>
