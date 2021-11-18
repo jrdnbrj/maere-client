@@ -109,7 +109,7 @@ const EDIT_CONTACT_INFO = gql`
     }
 `
 
-const Maere = () => {
+const Maere = ({ Loading }) => {
 
     const { loading, error, data, refetch } = useQuery(GET_CAROUSEL)
     const { loading: loadingHome, error: errorHome, data: dataHome } = useQuery(GET_HOME)
@@ -127,7 +127,7 @@ const Maere = () => {
         onError: ({ networkError: { result: { errors: err } } }) => {
             console.log(err[0].message)
             if (err[0].message.includes("'sequence':"))
-                alert('⚠️ El número de la secuencia ya existe.')
+                alert('❌ Ocurrió un error con el campo de la Secuencia. Inténtalo de nuevo.')
             else if (err[0].message.includes("'title':"))
                 alert('❌ Ocurrió un error con el campo del Título. Inténtalo de nuevo.')
             else if (err[0].message.includes("'text':"))
@@ -148,7 +148,7 @@ const Maere = () => {
         onError: ({ networkError: { result: { errors: err } } }) => {
             console.log(err[0].message)
             if (err[0].message.includes("'sequence':"))
-                alert('⚠️ El número de la secuencia ya existe.')
+                alert('❌ Ocurrió un error con el campo de la Secuencia. Inténtalo de nuevo.')
             else if (err[0].message.includes("'title':"))
                 alert('❌ Ocurrió un error con el campo del Título. Inténtalo de nuevo.')
             else if (err[0].message.includes("'text':"))
@@ -364,11 +364,11 @@ const Maere = () => {
     errorUs && console.log(errorUs)
     errorContact && console.log(errorContact)
 
-    if (loading) return <h4>Cargando Carrusel...</h4>
-    if (loadingHome) return <h4>Cargando Home...</h4>
-    if (loadingProduct) return <h4>Cargando Productos...</h4>
-    if (loadingUs) return <h4>Cargando Nosotros...</h4>
-    if (loadingContact) return <h4>Cargando Información de Contacto...</h4>
+    if (loading) return <Loading text={'Información de Carrusel'} />
+    if (loadingHome) return <Loading text={'Información de Home'} />
+    if (loadingProduct) return <Loading text={'Información de Productos'} />
+    if (loadingUs) return <Loading text={'Información de Nosotros'} />
+    if (loadingContact) return <Loading text={'Información de Contacto'} />
 
     return <section>
         <CreateModal />
@@ -400,7 +400,10 @@ const Maere = () => {
                         </div>
                         <div className="form-text">La imagen debe tener una dimensión de 2x1.</div>
                         <div className="input-group mb-1">
-                            <input type="file" id={`img-${i}`} className="form-control" />
+                            <label className="input-group-text" title="Nombre foto actual">
+                                <small>{item.image.split('/')[item.image.split('/').length - 1]}</small>
+                            </label>
+                            <input type="file" id={`img-${i}`} className="form-control input-file" />
                             <label 
                                 className="input-group-text" title="Ver Imagen Actual" 
                                 onClick={() => window.open(item.image, '_blank')}

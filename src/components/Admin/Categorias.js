@@ -36,7 +36,7 @@ const DELETE_CATEGORY = gql`
     }
 `
 
-const Categorias = () => {
+const Categorias = ({ Loading }) => {
     
     const [focus, setFocus] = useState(0)
     const [name, setName] = useState('')
@@ -104,7 +104,7 @@ const Categorias = () => {
             deleteCategory({ variables: { id } })
     }
 
-    if (loading) return <p>Cargando Categorias...</p>
+    if (loading) return <Loading text={'Categorías'} />
     
     return <>
         <ul className="list-group category-list">

@@ -21,7 +21,7 @@ const DELETE_CONTACT = gql`
     }
 `
 
-const Contactos = () => {
+const Contactos = ({ Loading }) => {
 
     const { data, loading, refetch } = useQuery(GET_CONTACTS)
 
@@ -41,8 +41,10 @@ const Contactos = () => {
             deleteContact({ variables: { id } })
     }
 
+    if (loading) return <Loading text={'Información de Contactos'} />
+
     return <>
-        {loading ? <span>Cargando Contactos...</span> : <div className="table-responsive">
+        <div className="table-responsive">
             <table className="table table-striped table-hover my-5">
                 <thead>
                     <tr>
@@ -75,7 +77,7 @@ const Contactos = () => {
                     })}
                 </tbody>
             </table>
-        </div>}
+        </div>
     </>
 }
 

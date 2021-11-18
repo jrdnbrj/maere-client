@@ -568,7 +568,7 @@
 
 @media (max-width: 900px) {
     .home-6 {
-        padding: 7% 0 30% 0;
+        padding: 7% 0 20% 0;
     }
 }
 
@@ -907,6 +907,24 @@
     .mobile-hidden {
         display: block;
     }
+}
+
+.input-file::file-selector-button {
+    display: none;
+}
+
+.loading-text {
+    font-family: Poppins Light;
+    font-size: 1.5rem;
+    display: table;
+    margin: 10% auto;
+}
+
+.loading-text .spinner-border {
+    font-size: 1rem;
+    width: 1.5rem;
+    height: 1.5rem;
+    margin-left: 1rem;
 }
 
 /* MODAL MODAL MODAL MODAL MODAL MODAL MODAL */

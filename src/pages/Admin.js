@@ -6,6 +6,16 @@ import Configuracion from '../components/Admin/Configuracion'
 
 
 const Admin = () => {
+
+    const Loading = ({ text }) => {
+        return (
+            <div className="loading-text">
+                <span>Cargando {text}...</span>
+                <div className="spinner-border text-dark" />
+            </div>
+        )
+    }
+
     return <div className="container mt-4 admin">
         <nav className="nav nav-pills nav-fill" role="tablist">
             <button className="nav-link active" data-bs-toggle="tab" data-bs-target="#nav-productos" type="button" role="tab" aria-controls="nav-productos" aria-selected="true">
@@ -26,19 +36,19 @@ const Admin = () => {
         </nav>
         <div className="tab-content mt-5" id="nav-tabContent">
             <div className="tab-pane fade show active" id="nav-productos" role="tabpanel" aria-labelledby="nav-productoss-tab">
-                <Productos />
+                <Productos Loading={Loading} />
             </div>
             <div className="tab-pane fade" id="nav-categorias" role="tabpanel" aria-labelledby="nav-categorias-tab">
-                <Categorias />
+                <Categorias Loading={Loading} />
             </div>
             <div className="tab-pane fade" id="nav-contactos" role="tabpanel" aria-labelledby="nav-contactos-tab">
-                <Contactos />
+                <Contactos Loading={Loading} />
             </div>
             <div className="tab-pane fade" id="nav-maere" role="tabpanel" aria-labelledby="nav-maere-tab">
-                <Maere />
+                <Maere Loading={Loading} />
             </div>
             <div className="tab-pane fade" id="nav-settings" role="tabpanel" aria-labelledby="nav-settings-tab">
-                <Configuracion />
+                <Configuracion Loading={Loading} />
             </div>
         </div>
     </div>

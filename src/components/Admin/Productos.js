@@ -48,7 +48,7 @@ const CREATE_PRODUCT = gql`
     }
 `
 
-const Productos = () => {
+const Productos = ({ Loading }) => {
     
     const { loading, error, data, refetch } = useQuery(GET_PRODUCTOS)
     const { loading: categoryLoading, error: categoryError, data: categoryData } = useQuery(GET_CATEGORIES)
@@ -231,8 +231,8 @@ const Productos = () => {
         modal.style.display = 'none'
     }
 
-    if (loading) return <p>Cargando Productos...</p>
-    if (categoryLoading) return <p>Cargando Categorias...</p>
+    if (loading) return <Loading text={'Productos'} />
+    if (categoryLoading) return <Loading text={'Categorías'} />
 
     return <>
         <CreateModal />
