@@ -821,6 +821,39 @@
 
 /* ADMIN ADMIN ADMIN ADMIN */
 
+.login-form {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    font-family: Poppins Light;
+}
+
+.admin-logo {
+    width: 50%;
+    margin-top: 5%;
+    margin-bottom: 5%;
+    filter: invert(48%) sepia(13%) saturate(3207%) 
+        hue-rotate(138deg) brightness(30%) contrast(80%) 
+        drop-shadow( 3px 3px 7px rgba(0, 0, 0, 0.7));
+}
+
+.login-form form button {
+    background-color: #194347;
+    color: #FFF;
+    font-family: Poppins Bold;
+    font-size: 1.1rem;
+    border: none;
+}
+
+.login-form form button:hover {
+    background-color: #1E5E5C;
+}
+
+.nav-link .bi-box-arrow-right::before {
+    font-size: 1rem;
+    transform: scale(1.4);
+}
+
 .admin .nav-link.active {
     background-color: #173E3C;
 }
@@ -889,7 +922,7 @@
     color: #F44336;
 }
 
-.bi {
+.pointer {
     cursor: pointer;
 }
 

@@ -276,12 +276,12 @@ const Productos = ({ Loading }) => {
                         <label>URL</label>
                     </div>
                     <div className="input-group mb-3">
-                        <input type="file" className="form-control" id={`image-${i}`} />
+                        <input type="file" className="form-control input-file" id={`image-${i}`} />
                         <label 
-                            className="input-group-text" title="Ver Imagen Actual"
+                            className="input-group-text pointer" title="Nombre foto actual"
                             onClick={() => window.open(producto.image, '_blank')}
                         >
-                            <i className="bi bi-image-fill" />
+                            <small>{producto.image.split('/')[producto.image.split('/').length - 1]}</small>
                         </label>
                     </div>
                     <button className="btn btn-sm btn-success mb-5 me-2" type="submit">Guardar</button>

@@ -16,7 +16,7 @@ const GET_CATEGORIES = gql`
 
 const Navbar = () => {
 
-    const { loading, error, data } = useQuery(GET_CATEGORIES)
+    const { data } = useQuery(GET_CATEGORIES)
 
     useEffect(() => {
         const autohide = document.querySelector('.autohide')
@@ -41,9 +41,6 @@ const Navbar = () => {
             lastScroll = currentScroll
         }
     })
-
-    error && console.log(error)
-    loading && console.log('Cargando Categorias') 
 
     return <nav className="navbar navbar-container navbar-expand-lg bg-light autohide">
         <div className="container-fluid">

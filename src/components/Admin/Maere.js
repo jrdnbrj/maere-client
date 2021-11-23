@@ -400,15 +400,12 @@ const Maere = ({ Loading }) => {
                         </div>
                         <div className="form-text">La imagen debe tener una dimensión de 2x1.</div>
                         <div className="input-group mb-1">
-                            <label className="input-group-text" title="Nombre foto actual">
-                                <small>{item.image.split('/')[item.image.split('/').length - 1]}</small>
-                            </label>
                             <input type="file" id={`img-${i}`} className="form-control input-file" />
                             <label 
-                                className="input-group-text" title="Ver Imagen Actual" 
+                                className="input-group-text pointer" title="Nombre foto actual"
                                 onClick={() => window.open(item.image, '_blank')}
                             >
-                                <i className="bi bi-image-fill" />
+                                <small>{item.image.split('/')[item.image.split('/').length - 1]}</small>
                             </label>
                         </div>
                         <button className="btn btn-sm btn-success mb-3 me-2" type="submit">Guardar</button>

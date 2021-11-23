@@ -1,8 +1,26 @@
-import { ApolloClient, InMemoryCache } from '@apollo/client'
+import { ApolloClient, InMemoryCache, createHttpLink } from '@apollo/client'
+import { setContext } from '@apollo/client/link/context'
 
+
+const productionURL = 'https://maere-server.herokuapp.com/graphql'
+const developmentURL = 'http://localhost:8000/gql'
+
+const httpLink = createHttpLink({
+  uri: process.env.NODE_ENV === 'production' ? productionURL : developmentURL,
+})
+
+const authLink = setContext((_, { headers }) => {
+  const token = localStorage.getItem('token')
+  return {
+    headers: {
+      ...headers,
+      authorization: token ? token : '',
+    }
+  }
+})
 
 const client = new ApolloClient({
-  uri: process.env.NODE_ENV === 'production' ? 'https://maere-server.herokuapp.com/gql' : 'http://localhost:8000/gql',
+  link: authLink.concat(httpLink),
   cache: new InMemoryCache()
 })
 
