@@ -2,7 +2,7 @@ import { ApolloClient, InMemoryCache, createHttpLink } from '@apollo/client'
 import { setContext } from '@apollo/client/link/context'
 
 
-const productionURL = 'https://maere-server.herokuapp.com/graphql'
+const productionURL = 'https://maere-server.herokuapp.com/gql'
 const developmentURL = 'http://localhost:8000/gql'
 
 const httpLink = createHttpLink({
