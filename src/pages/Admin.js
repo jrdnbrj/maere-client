@@ -39,7 +39,7 @@ const Admin = () => {
         )
     }
 
-    const [loginAdmin, { loading }] = useMutation(LOGIN, {
+    const [loginAdmin] = useMutation(LOGIN, {
         onCompleted: ({ login: { token, success } }) => {
             if (success) {
                 localStorage.setItem('token', token)
