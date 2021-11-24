@@ -86,28 +86,30 @@ const Productos = () => {
         </section>
         <section className="bio-menu">
             {categoryData && categoryData.getCategories.map(category => {
-                return <span key={category.sequence}>
-                    <a href={`#${category.name.split(' ')[0]}`}>{category.name}</a>
-                </span> 
+                if (category.products > 0) {
+                    return <span key={category.sequence}>
+                        <a href={`#${category.name.split(' ')[0]}`}>{category.name}</a>
+                    </span> 
+                } else return null
             })}
         </section>
         { data &&
             <section className="products">
-                <section className="row">
+                <section className="row mb-5">
                     <img 
-                        className={`product-brand col ${brand === 'Symborg' ? 'focus-brand' : 'blur-brand'}`} 
+                        className={`product-brand col-lg-3 col-6 ${brand === 'Symborg' ? 'focus-brand' : 'blur-brand'}`} 
                         src={symborg} onClick={() => onChangeBrand('Symborg')} alt="Symborg"
                     />
                     <img 
-                        className={`product-brand col ${brand === 'Catawba' ? 'focus-brand' : 'blur-brand'}`} 
+                        className={`product-brand col-lg-3 col-6 ${brand === 'Catawba' ? 'focus-brand' : 'blur-brand'}`} 
                         onClick={() => onChangeBrand('Catawba')} src={catawba} alt="Catawba" 
                     />
                     <img 
-                        className={`product-brand col ${brand === 'ACP' ? 'focus-brand' : 'blur-brand'}`} 
+                        className={`product-brand col-lg-3 col-6 ${brand === 'ACP' ? 'focus-brand' : 'blur-brand'}`} 
                         onClick={() => onChangeBrand('ACP')} src={acp} alt="acp" 
                     />
                     <img 
-                        className={`product-brand col ${brand === 'Fenecsa' ? 'focus-brand' : 'blur-brand'}`} 
+                        className={`product-brand col-lg-3 col-6 ${brand === 'Fenecsa' ? 'focus-brand' : 'blur-brand'}`} 
                         onClick={() => onChangeBrand('Fenecsa')} src={fcnecsa} alt="fenecsa" 
                     />
                 </section>

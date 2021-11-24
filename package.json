@@ -1,5 +1,6 @@
 {
   "name": "maere-client",
+  "homepage": "https://www.maere.com.ec/",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
