@@ -2,8 +2,7 @@ import { ApolloClient, InMemoryCache, createHttpLink } from '@apollo/client'
 import { setContext } from '@apollo/client/link/context'
 
 
-// const productionURL = 'https://maere-server.herokuapp.com/gql'
-const productionURL = 'https://161.35.189.44:8000/gql'
+const productionURL = 'https://server.maere.com.ec/gql'
 const developmentURL = 'http://localhost:8000/gql'
 
 const httpLink = createHttpLink({
