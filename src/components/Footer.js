@@ -1,3 +1,5 @@
+import { useQuery, gql } from '@apollo/client'
+
 import ContactForm from './ContactForm'
 
 import campo from '../assets/img/campo.jpg'
@@ -5,6 +7,9 @@ import logo from '../assets/img/logo_3.svg'
 
 
 const Footer = () => {
+
+    const { data } = useQuery(gql`{ getAddress }`)
+
     return <>
         <section className="row" id="row-correction">
             <section className="col-12 col-lg-6 campo">
@@ -17,7 +22,7 @@ const Footer = () => {
         <section className="footer row" id="row-correction">
             <section className="col-lg-6">
                 <img src={logo} alt="logo" className="logo-footer" />
-                <span className="mt-3">La Tierra & Shyris. E0435.</span>
+                <span className="mt-3">{data?.getAddress}</span>
                 <span>Quito - Ecuador</span>
             </section>
             <section className="col-lg-6 social">
